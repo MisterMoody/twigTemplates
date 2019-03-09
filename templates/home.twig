@@ -1,0 +1,78 @@
+{% extends "base.twig" %}
+
+{# Browser Tab Title #}
+{% block title %}Home{% endblock %}
+
+{# 'head' Additions 
+    Style h3 Tags with Monochromatic Color
+#}
+{% block head%}
+{{ parent() }}
+<style type="text/css"> h3 {
+  background: -webkit-linear-gradient(#111, #838487);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;} </style>
+{% endblock %}
+
+{% block content %}
+      
+      <!-- //CONTENT-BEGINS..... -->
+        <section class="">
+          {# Nav Key are placed on Top Line #}
+          {{ nav|keys|join(' | ') }}
+          <div class="">
+            <h3>Using a Variable</h3>
+            <p class="">
+              Using variables in twig is a two step process. First, create the variable with an array of named value-pairs and pass it to the <code class="codeLocation">render()</code> method in the <code class="codeLocation">index.php</code> file. Then, output the variable in the assigned <code class="codeLocation">.twig</code> file by calling the name of the variable between two sets of curly braces.
+            </p>
+            <div class="subGrid">
+              <div class="">
+                <p><code class="codeLocation">index.php</code>
+                <br>
+                <code>echo &#36;twig&#45;&gt;render&#40;&#39;home.twig&#39;, &#91;&#39;<span class="hL">name</span>&#39; => &#39;ray&#39;&#93;&#41;&#59;</code>
+                </p>
+              </div>
+              <div class="">
+                <p><code class="codeLocation">xxx.twig</code>
+                <br>
+                <code>&#123;&#123; <span class="hL">name</span> &#125;&#125;</code>
+                </p>
+              </div>
+            </div>
+            <p>Output: ray</p>
+          </div>
+          <div class="">
+            <h3>Modifying a Variable with Filters</h3>
+            <p class="">
+              Filters allow developers to modify their variables with ease, and can be implemented by ammending the assigned variable with a <em>pipe</em> followed by a filter, or applying a filter to a section of code. Below are two examples that use the <b><em>title</em> Filter</b>, which capitalizes the first letter of the variables' valuee.
+            </p>            
+            <div class="subGrid">
+              <div class="">
+                <p>Ammend Assigned <code class="codeLocation">xxx.twig</code> Variable with a Filter
+                <br>
+                <code>&#123;&#123; name<span class="hL">&#124;</span><span class="hL3">title</span> &#125;&#125;!</code>
+                  <br>
+                  Output: {{ name|title }}
+                </p>
+              </div>
+              <div class="">
+                <p>Inject a Section of Code in <code class="codeLocation">xxx.twig</code> with a Filter
+                <br>
+                  <code>&#123;<span class="hL">&#37;</span> <span class="hL2">filter</span> <span class="hL3">title</span> <span class="hL">&#37;</span>&#125; hello world &#123;<span class="hL">&#37;</span> <span class="hL2">endfilter</span> <span class="hL">&#37;</span>&#125;</code>
+              <br>
+              Output: {% filter title %} hello world {% endfilter %}
+                </p>
+                <p class="">
+              This code applies a filter to a section of code by wrapping it with the filter tag.
+            </p>
+              </div>
+            </div>
+            <p class="">Multiple filters can also be chained to one another, with the output of one filter being applied to the next. Learn more about using <a class="learn" href="https://twig.symfony.com/doc/2.x/filters/index.html" target="_blank"><b>Filters</b></a> and <a class="learn" href="https://twig.symfony.com/doc/2.x/tags/index.html" target="_blank"><b>Tags</b></a>.</p>
+          </div>
+          <div>
+            <h4><a href="about.php" class="btn">Learn More</a></h4>
+          </div>
+        </section> 
+      <!-- .....CONTENT-ENDS// -->  
+ 
+{% endblock %}

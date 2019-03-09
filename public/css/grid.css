@@ -1,0 +1,124 @@
+/*******************************************/
+/** GRID LAYOUTS ***************************/
+/*******************************************/
+
+
+/*******************************************/
+/** MAIN TEMPLATE GRID *********************/
+article {
+	margin: 0vh 0vw;
+  padding: 0 auto;
+  min-height: 100%;
+	display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto minmax(400px, 1fr) auto;
+	grid-gap: 0px;
+}
+main {
+  margin: 0vh 4.2vw;
+}
+
+@media only screen and (min-width: 800px) {
+  article {
+    margin: 0 0vw;
+    padding: 0 auto;
+    display: grid;
+    grid-template-rows: auto 100% auto;
+  }
+  main {margin: 0vh 6vw;}
+}
+/**//***********************************//**/
+
+
+
+/*******************************************/
+/** Main Template SUB-GRID *****************/
+.subGrid {
+  margin: 0 auto;
+  padding: 0 auto;
+  display: grid;
+  grid-template-rows: repeat(auto, 1fr);
+  grid-template-columns: repeat(auto, minmax(200px,auto));
+  grid-gap: 8px;
+}
+@media only screen and (min-width: 800px) {
+  .subGrid {
+    margin: 0 auto;
+    padding: 0 auto;
+    display: grid;
+    grid-template-rows: repeat(auto, 1fr);  /*88vh*/
+    grid-template-columns: repeat(2, 49%);  /*repeat(auto-fit, minmax(200px, 1fr))*/
+    grid-gap: 16px;
+    
+  }
+}
+/**//***********************************//**/
+
+/*******************************************/
+/** Portfolio PAGE 'Category' Module *******/
+.category {
+	display: grid;
+	grid-template-columns: repeat(auto-fit,  1fr);
+	grid-gap: 4px;
+}
+@media screen and (min-width: 800px) {
+	.category {
+    display: grid;
+    grid-template-columns: repeat(2, [col] 1fr);
+    grid-template-rows: repeat (2, 1fr);
+    grid-gap: 4px;
+  }
+}
+/**//***********************************//**/
+
+
+
+
+/*******************************************/
+/** SOCIAL MEDIA GRID **********************/
+/*.download {grid-area: download;}
+Convert Grid 
+  > Modify g-t-c > replace '4' w. '5'
+  > Modify g-t-a > include 'download
+*/
+.github {grid-area: github;}
+.twitter {grid-area: twitter;}
+.email {grid-area: email;}
+.phone {grid-area: phone;}
+ul.social {
+  margin-top: -18px; margin-bottom: -1px;
+  padding: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1.81rem;
+  justify-content: space-between;
+  grid-template-areas: 
+    "github twitter email phone";
+}
+@media only screen and (min-width: 800px){
+  ul.social {
+    margin-top: 10px; margin-bottom: -10px;
+  }
+}
+/**//***********************************//**/
+
+
+
+
+/*******************************************/
+/** xxxxx16 ******************/
+
+/**//***********************************//**/
+
+
+
+
+/*******************************************/
+/** FEATURE QUERY for BROWSER SUPPORT ******/
+@supports (display: grid) { 
+  .grid > * {
+    width: auto; 
+    margin: 0;
+  } 
+}
+/**//***********************************//**/

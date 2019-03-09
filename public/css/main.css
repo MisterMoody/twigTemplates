@@ -1,0 +1,734 @@
+/*******************************************/
+/** UNIVERSAL BASE STYLES ******************/
+/*******************************************/
+
+*, *:before, *:after {box-sizing: border-box;} 
+/**/
+/*Smooth Scroll Effect*/
+html {
+  /*scroll-behavior: smooth;*/
+  height: 100%;
+}
+/**/
+/* Remove Browser Scroll + Gives Site an 'APP' */
+/* 
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;               
+  background: transparent;  
+}
+*/
+/**/
+
+body {
+  margin: 0 auto;
+  padding: 0 auto;
+  font-size: calc(1em + 1vw); 
+  /*min-height: calc(100vh - 5em)*/
+  min-height: 100%;
+	font-family: 'Raleway', sans-serif;
+  font-kerning: auto;
+}
+
+/* FONT-STYLES for 'HEADINGS' */
+h1 {font-size: 2em;}
+h2 {font-size: 1.563em;}
+h3 {font-size: 1.25em;}
+h4 {font-size: 0.8em;}
+h5 {font-size: 0.64em;}
+h6 {font-size: 0.512;}
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+  font-weight: 900;
+  font-variant: small-caps;
+} 
+
+/* FONT-STYLES for 'PARAGRAPHS/TEXT' */
+.readText { 
+  text-align: left;
+  line-height: 24px;/*26px*/
+  /*letter-spacing: 0.01rem;*/
+  font-size: 0.80em;/*0.82em*/
+}
+
+/*******************************************/
+/** Portfolio PAGE 'Category' Module *******/
+/**/
+.cat__container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: inline-block; 
+}
+.cat__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cat__image {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.cat__text {
+	color: #fff;
+	font-family: sans-serif;
+	position: absolute;
+	top: 40%;
+	left: 20%;
+	transform: translate(-10%, -50%);
+	font-size: 1.2em;
+}
+/**/
+.overlay {
+	position: absolute;
+	transition: all .3s ease;
+	opacity: 0;
+}
+.cat__container:hover .overlay {
+	width: 100%;
+	opacity: 1;
+}
+/**/
+.overlayLeft {
+	height: 100%;
+	width: 0;
+	top: 0;
+	left: 0;
+	background-color: #838487;
+}
+/*  Issue with Mobile-Browser 'Right-Edge Hanggar'
+.overlayRight {
+	height: 100%;
+	width: 0;
+	top: 0;
+	right: 0;
+	background-color: #838487;
+}*/
+.overlayTop {
+	height: 0;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: #838487;
+}
+.overlayBottom {
+	height: 0;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background-color: #838487;
+}
+/*	++ Not Req. 
+		because .container:hover .overlay"
+.container:hover .overlayLeft,
+.container:hover .overlayRight {
+	width: 100%;
+}*/
+.cat__container:hover .overlayTop, .cat__container:hover .overlayBottom {
+	height: 100%;
+	opacity: 1;
+}
+/**/
+@media screen and (min-width: 1000px) {
+  .cat__title {
+    margin-top: 24px;
+  }
+  .cat__code {
+    /*See 'line 91, animation.css' */
+  }  
+}
+/*
+*
+*
+*/
+
+main.bhm > p {
+  margin: 0 0 0.5em 0; 
+  font-size: 0.9em; 
+  line-height: 1.5;
+}
+/* */
+ol.list {
+  margin: 0 0 0 -24px;
+  font-size: 0.8em;
+}
+/**/
+img {
+  margin: 0 auto;
+  width: 100%; 
+  height: auto;
+}
+figure {
+  margin: 0 0.38em; 
+  padding: 0;
+}
+figcaption {
+  font-size: 0.68em;
+  font-style: italic;
+  text-align: center;
+}
+@media all and (min-width: 1000px) {  
+  main.bhm > p {font-size: 0.75em;}
+  ol.list {
+    margin: 0 0 0 -22px;
+  }
+  ol.list > li {
+    margin: 12px 0;
+  }
+  img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  figure {margin: 1em 0;}
+}
+
+/*******************************************/
+/** 'bhm.ph' <video> Module Styles for LPs */
+section {margin: 32px 0;}
+small {font-size: 0.8em; }
+p {
+  margin: 0 0 0.5em 0; 
+  font-size: 0.9em; 
+  line-height: 1.5;
+}
+@media only screen and (min-width: 800px) {
+  p {font-size: 0.75em;}
+}
+/** <Video> DIV ***************************/
+.wrapper {
+  max-width: 90%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+video, audio, iframe {
+  margin: 0 auto;
+  display: block;
+  width: 100%;  /* ADD 'Responsiveness' */
+}
+/**/
+.author {text-align: center; color: #838487; }
+/**//*********************************//**/
+/**//***********************************//**/
+
+
+/* <anchor> LINK STYLES*/
+a {
+  text-decoration: none;
+  color: black; 
+  transition: all .25s ease-in-out;
+}
+a:hover {
+  opacity: 0.7;
+  transition: all .25s ease-in-out;
+}
+a.learn:hover {
+  opacity: 0.7;
+  transition: all .25s ease-in-out;
+  border-bottom: 2px solid #000;
+}
+/* LIST STYLES*/
+ul {
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0;
+}
+/* CODE STYLES */
+code {
+  /*padding: 0.2em;*/
+  border-radius: 3px;
+  font-weight: 900;
+  font-size: 0.91em;
+  background-color: gold;
+  font-family: monospace;
+}
+.codeLocation {
+  /*padding: 0.2em;*/
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.88em;
+  color: #333;
+  background-color: #bbb;
+  font-family: monospace;
+}
+/*Highlights a specific piece of <code>*/
+span.hL {color: red;}
+span.hL2 {color: darkgreen;}
+span.hL3 {color: royalblue;}
+
+
+/* 'Line' Divider Styles*/
+hr {
+  background-image: linear-gradient(to right, rgba(10, 9, 9, 0.0), rgba(10, 9, 9, 0.5), rgba(10, 9, 9, 0.0));
+  border: 0;
+  height: 1px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  overflow: visible;
+  text-align: center;
+}
+hr:after { /*rgba(255, 0, 0, 0.8)*/
+  background: rgba(192, 192, 192, 0.6);
+  content: ' \00A7';
+  border: 1px dotted rgba(10, 9, 9, 0.7);
+  border-radius: 50%;
+  display: inline-block;
+  font: "BodoniXT" !important;
+  font-size: 0.9em;
+  padding: 0 0.6em;
+  position: relative;
+  top: -0.7em;
+}
+
+/* ********************************************** */
+/* ********************************************** */
+
+
+/*******************************************/
+/** NAVIAGATION ****************************/
+/* https://itnext.io/how-to-build-a-responsive-navbar-using-flexbox-and-javascript-eb0af24f19bf */
+.navbar {
+  background-image: linear-gradient(0deg, #ddd 10%, #222 100%);
+}
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+.nav-links,
+.logo {
+  margin-left: 4.2vw;  
+  text-decoration: none;
+  color: black;
+  /*color: rgba(255, 255, 255, 0.5);*/
+  transition: all .25s ease-in-out;
+}
+.logo,
+.main-nav li {
+  margin-top: 8px;
+}
+.logo {
+  display: inline-block;
+  font-size: 1.3em;
+}
+
+/*Hamburger ICON*/
+.navbar-toggle {
+  font-size: 28px;
+  position: absolute;
+  top: 8px;
+  right: 24px;
+  transition: all .25s ease-in-out;
+  cursor: pointer; 
+  color: black; /*rgba(255,255,255,0.8)*/
+}
+/*Icon TOGGLE = Is this Required????*/
+.active {
+  display: block;
+}
+@media screen and (min-width: 800px) {
+  .navbar {
+    display: flex;
+    padding-bottom: 0;
+    height: 53px;
+  }
+  .main-nav {
+    display: flex;
+    margin-top: 10px;
+    margin-left: auto;
+    flex-direction: row;
+  }
+  
+  /*Align Margins with 'grid' Margins*/
+  .logo {
+    margin-left: 6vw;
+  }
+  .main-nav li {
+    font-size: 0.80em;
+    margin-right: 6vw;
+  }
+  /*Space between nav-links
+  margin-left: -10px;*/
+  .nav-links {
+    margin-left: -10px; 
+  }
+  /*.main-nav, .logo {margin: 0 6vw;}*/
+  .navbar-toggle {
+    display: none;
+  }
+  /*.logo:hover,
+  .nav-links:last-child {margin-right: 6vw;}*/
+  .nav-links:hover {
+    opacity: 0.5;
+    transition: all .25s ease-in-out;
+  }
+}
+/*******************************************/
+/*******************************************/
+
+
+/*******************************************/
+/** FOOTER *********************************/
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-image: linear-gradient(180deg, #ddd 32%, #222 100%);
+}
+footer.credit {
+  font-size: 0.80em;
+} /*575em*/
+@media only screen and (min-width: 800px) {
+  footer {
+    margin-top: 4px;
+  }
+  footer.credit {
+    font-size: 1em;
+  }
+}
+/*******************************************/
+/*******************************************/
+
+
+/*******************************************/
+/** IMAGES *********************************/
+.mainImage {
+  margin: 1em 0 0 0;
+  width: 100%;
+  height: auto;
+}
+.imgL {
+  float: left;
+  margin: 10px 6px 0 0; /*8px 4px 0 0;*/
+  width: 45%;
+  height: 155px; 
+  /*border-radius: 0 8px 0 0;*/
+}  
+.imgR {
+  float: right;
+  margin: 10px 0 0 6px;
+  width: 45%;
+  height: 168px; 
+  /*border-radius: 8px 0 0 0;*/
+} 
+.imgL, .imgR {
+    border: 2px solid #838487;
+}
+@media all and (min-width: 800px) {  
+  .mainImage {
+    width: auto ;
+    max-width: 100% ;
+    height: auto ;
+  }
+  .imgL {
+    float: left;
+    margin: 5px 20px 0 0;
+    width: 40%;
+    height: 275px;/*auto*/ 
+  }
+  .imgR {
+    float: right;
+    margin: 8px 0 0 20px; /*0 0 10px 25px*/
+    width: 40%;
+    height: 275px;/*auto*/
+    border-radius: 2px;
+  }
+  /**/
+}
+/*******************************************/
+/*******************************************/
+
+.btn {
+  display: inline-block;
+  width: 95%;
+  margin: 0; padding: 0;
+  text-align: center; 
+  color: #fff;
+  letter-spacing: 1px;
+  background-color: #000;
+  border-radius: 0.35em;
+  text-align: center;
+  border: 2px solid #fff;
+}
+.btn:hover {
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #000;
+  opacity: 1;
+}
+p.btn {
+  height: 100%;
+  text-align: center;
+  border: 2px solid #000;
+}
+@media only screen and (min-width: 800px) {
+  .btn {
+    width: 100%;
+    height: 44px;
+  }
+  .miniGallery {margin: 50px 0;}
+}
+
+
+
+
+/*******************************************/
+/** SKILLS & TRAINING **********************/
+/*Skill Bars*/
+.SkillBar {
+  width: 100%;
+  height: 25px;
+  position: relative;
+  background: #838487;
+  /*margin: 2px 0 -4px 0;
+  padding-bottom: -18px;*/
+}
+.Skill-Area {
+  float: left;
+  position: absolute;
+  text-shadow: none;
+  color: #fff;
+}
+.PercentText {
+  position: relative;
+  padding-right: 15px;
+  float: right;
+  text-shadow: none;
+  color: #fff;
+}
+.skillSpecs {
+  font-size: 0.68em;
+  margin-bottom: 8px;
+  /*background-color: #B93A32;*/
+}
+/*Individual Skill Bar 'width'*/
+#Skill-Design {
+  width: 80%;
+}
+#Skill-Develop {
+    width: 68%;
+}
+#Skill-Deploy {
+    width: 82%;
+}
+#Skill-Copy {
+    width: 91%;
+}
+#Skill-Interpersonal {
+  width: 79%;
+}
+/*General Skill-Bar Settings*/
+#Skill-Design, 
+#Skill-Develop, 
+#Skill-Deploy, 
+#Skill-Copy, 
+#Skill-Interpersonal {
+  height: inherit; /* Use 'inherit' */
+  position: absolute;  
+  background-color: #000;
+}
+/**/
+@media only screen and (min-width: 800px) {
+  .skills {margin-top: 25px;}
+  .PercentText {margin: 0 auto;}
+  .skillSpecs {
+    margin-bottom: 8px;
+  }
+  div.skillSpecs {
+    font-size: 0.62em;
+  }
+  #Skill-Design, 
+  #Skill-Develop, 
+  #Skill-Deploy, 
+  #Skill-Copy, 
+  #Skill-Interpersonal, 
+  .SkillBar, .Skill-Area, .PercentText {
+    height: 1.07em;
+  }
+  
+} 
+/*******************************************/
+/*******************************************/
+
+
+
+/*******************************************/
+/** WORK SECTION ***************************/
+details {
+  margin: 1rem auto;
+  padding: 0 0.8rem 0 0.2rem;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  border: 1px solid #838487;
+  border-radius: 4px;
+  color: #000;
+  /*background-color: #E0E0E0;
+  transition: background-color .15s;*/
+}
+details > :last-child {
+  margin-bottom: 1rem;
+}
+details::before {
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  opacity: .15;
+  box-shadow: 0 .25em .25em #838487;
+  transition: opacity .2s;
+  z-index: -1;
+}
+details[open] {
+  background-color: #fff;
+}
+details[open]::before {
+  opacity: .6;
+}
+/*See '.summaryTable'*/
+
+summary {
+  font-size: 0.64em;
+  padding: 0.5rem 1em 0.5rem 0;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+summary::before, summary::after {
+  width: .75em;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  content: '';
+  background-color: #000;
+  text-align: right;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+summary::after {
+  -webkit-transform: translateY(-50%) rotate(90deg);
+          transform: translateY(-50%) rotate(90deg);
+}
+[open] summary::after {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details > p {
+  margin: 0 0 1em;
+}
+/*details > ul {
+  margin: 0 0 1em;
+  padding: 0 0 0 1em;
+}*/
+details > li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+/*******************************************/
+/*******************************************/
+
+
+/*******************************************/
+/** CONTACT FORM ***************************/
+.contactForm {
+  margin: 20px 0;
+  color: #000;
+  font-weight: bold; 
+  height: 100%;
+}
+input, textarea{
+  width: 99%;
+  margin: 1px 0;
+  font-size: 1em;
+	border-radius: 4px;
+	background-color: rgba(255,255,255,.6);
+	border: solid 1px #000;
+  padding: 1vmax 0;
+}
+#submit_button {
+	border-radius: 4px;
+  background-color: #3a3a3a;
+  color: #fff;
+	font-weight: bold;
+  font-size: 1em;
+  transition-duration: .5s;
+  cursor: pointer;
+  padding: 2vmax;
+  width: 40%; 
+  margin: 16px 30%;
+}
+#submit_button:hover {
+  background-color: #1a1a1a;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 20px #000;
+  transition-duration: .5s;  
+}
+label.required:after {
+  content:'*';
+  color:red;
+}
+@media only screen and (min-width: 800px) {
+  .contactForm {
+    margin: 50px auto; 
+  height: 80vh;
+  }
+  .lineInput {height: 1em;}
+  textarea {width: 99%;}
+  #submit_button {
+    padding: 1vmax;
+    width: 35%;
+    margin: 16px 30%;
+  }
+}
+/*******************************************/
+/*******************************************/
+
+
+/*******************************************/
+/** SCROLL-to-TOP Button *******************/
+/*SCROLL-to-TOP Button*/
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  right: 0px; /* Place the button 30px from the right */
+  bottom: 350px;
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: white; /* Set a background color */
+  /* color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 0;  /*Some padding */
+  /* border-radius: 10px; /* Rounded corners */
+  font-size: 10px; /* Increase font size */
+}
+#myBtn:hover {
+  /* background-color: #ccc; Add a dark-grey background on hover */
+  opacity: 0.7; color: blue;
+}
+@media screen and (min-width: 768px) {
+  #myBtn {
+    bottom: 50%; /* Place the button 26px at the bottom of the page */
+    right: 8px; /* Place the button 30px from the right */
+    padding: 10px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    background-color: #838487; /* Set a background color */
+  }
+}
+/*******************************************/
+/*******************************************/
