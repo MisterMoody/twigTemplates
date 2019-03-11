@@ -3,5 +3,28 @@
 {% block title %}Contact{% endblock %}
 
 {% block content %}
-<h1>Contact Us</h1>
+
+<!-- //CONTENT-BEGINS..... -->
+<section>
+  {# THIS IS THE CODE TO MANIPULATE 'on-IMPORT OF 'form.twig' #}
+  <!--<div>
+    <h1>Contact</h1>
+    {# Import 'Form' Macro #}
+    {% import "form.twig" as forms %}
+    <form method="post">
+      {{ form.input('name', post.name) }}
+      {{ form.input('email', post.email, '', "I will not share your email.") }}
+      {{ form.textarea('message', post.message) }}
+      <button type="submit" class="" id="submit_button">Send Message</button>
+    </form>
+  </div>-->
+  <div>
+    <h1>Contact Page Layout</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas integer eget aliquet nibh. Diam vulputate ut pharetra sit amet aliquam id diam maecenas.</p>
+    <p>Enim ut tellus elementum sagittis vitae et leo duis ut. Ullamcorper malesuada proin libero nunc consequat interdum. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. Elementum facilisis leo vel fringilla est ullamcorper eget nulla facilisi.</p>
+    <p>Massa enim nec dui nunc mattis. Nunc sed id semper risus in hendrerit. Dignissim sodales ut eu sem integer vitae. Odio aenean sed adipiscing diam donec adipiscing tristique risus. Integer vitae justo eget magna fermentum iaculis eu non. </p>
+  </div>
+</section>
+<!-- .....CONTENT-ENDS// --> 
+
 {% endblock %}
