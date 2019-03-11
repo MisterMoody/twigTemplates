@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-
+  
+  # DO NOT FORGET TO PLACE THIS FILE ON THE OUTSIDE OF THE 'public/' FOLDER
+  
   # Some hosts may require you to use the `RewriteBase` directive.
   # Determine the RewriteBase automatically and set it as environment variable.
   # If you are using Apache aliases to do mass virtual hosting or installed the
@@ -9,13 +11,17 @@
   # work in environments without path prefix as well, providing a safe, one-size
   # fits all solution. But as you do not need it in this case, you can comment
   # the following 2 lines to eliminate the overhead.
-  RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
-  RewriteRule ^(.*) - [E=BASE:%1]
-
-  # If the above doesn't work you might need to set the `RewriteBase` directive manually, it should be the
-  # absolute physical path to the directory that contains this htaccess file.
+  # RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+  # RewriteRule ^(.*) - [E=BASE:%1]
+    # or
+    # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  
+  # If the above doesn't work you might need to set the `RewriteBase` directive manually, it 
+  # should be the absolute physical path to the directory that contains this htaccess file.
   # RewriteBase /
 
+  RewriteBase /
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^ index.php [QSA,L]
 </IfModule>
