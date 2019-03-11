@@ -12,8 +12,8 @@
     <!-- Browser Tab Icon -->
     <link rel="shortcut icon" href="" type="img/m" class="rounded">    
     <!-- Custom CSS Styles -->   
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/grid.css">
     <!-- Custom Fonts -->       
 	  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Raleway" rel="stylesheet">
     <!-- FontAwesome CSS Fonts -->
@@ -27,35 +27,18 @@
 		<!-- //'start of' MAIN GRID CONTAINER-->	
     <article>  
       <!-- //NAVIGATION -->
-			<!--<nav class="navbar">
+			<nav class="navbar">
         <span class="navbar-toggle" id="js-navbar-toggle">
           <i class="fa fa-bars"></i>
         </span>
-        <a href="index.php" class="logo">Twig Templating</a>
-        <ul class="main-nav" id="js-menu">
-          <li>
-            <a href="about.php" class=" active nav-links">About</a>
-          </li>
-          <li>
-            <a href="work.php" class="nav-links">Work</a>
-          </li>
-          <li>
-            <a href="contact.php" class="nav-links">Contact</a>
-          </li>
-        </ul>
-      </nav>-->
-			<nav class="navbar">
-        <!--UNHIDE on PRODUCTION => Nav 'Toggler' <span class="navbar-toggle" id="js-navbar-toggle">
-          <i class="fa fa-bars"></i>
-        </span>-->
-        <a href="index.php" class="logo">Twig Templating</a>
+        <a href="/" class="logo">Twig Templating</a>
         <ul class="main-nav" id="js-menu">
           {# Conditional for Navigation Item located in 'nav-item.twig' #}
           {% for item in nav %}
           {{ include("nav-item.twig") }}
           {% else %}
           <li>
-            <a href="/" class="nav-links">About
+            <a href="/" class="nav-links">x
             <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -88,9 +71,9 @@
     
     <!-- JAVASCRIPT ************** --> 
     <!-- \\\\\\ Global Navigation  -->
-    <script src="templates/siteNav.js"></script>
-    <!-- \\\\\\ Scroll-to-Top      -->
-    <script src="inc/scrollTop.js"></script>
+    <script src="templates/js/siteNav.js" async></script>
+    <!-- \\\\\\ Scroll-to-Top      
+    <script src="inc/scrollTop.js"></script>-->
     <!-- \\\\\\ Font-Awesome Icons -->
     <script src="https://use.fontawesome.com/ceeedfe13b.js"></script>
     <!-- ************************* --> 
