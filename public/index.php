@@ -13,6 +13,11 @@ $nav = [
     'caption' => 'Home',
     'status' => 'false'
   ],
+  'about' => [
+    'href' => '../about',
+    'caption' => 'About',
+    'status' => 'false'    
+  ],
   'contact' => [
     'href' => '../contact',
     'caption' => 'Contact',
@@ -23,8 +28,11 @@ $nav = [
 //Global Routing == Render 'Pages/Variables'
 if (substr($_SERVER['REQUEST_URI'], 0, 8) == '/contact') {
     $nav['contact']['status'] = 'active';
-    echo $twig->render('contact.twig', ['name' => 'ray', 'nav' => $nav]);
+    echo $twig->render('contact.twig', ['name' => 'mister moody', 'nav' => $nav, 'post' => $_POST]);
+} elseif (substr($_SERVER['REQUEST_URI'], 0, 8) == '/about') {
+    $nav['about']['status'] = 'active';
+    echo $twig->render('about.twig', ['name' => 'mister moody', 'nav' => $nav]);
 } else {
     $nav['home']['status'] = 'active';
-    echo $twig->render('home.twig', ['name' => 'ray', 'nav' => $nav]);
+    echo $twig->render('home.twig', ['name' => 'mister moody', 'nav' => $nav]);
 }
