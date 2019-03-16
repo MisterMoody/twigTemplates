@@ -19,7 +19,7 @@ Once installation is complete, the project will house the ```vendor/``` folder a
 
 ![Main Directory](public/img/mainDIR.png)
 
-The ```vendor/``` folder contains *required project dependencies* for Composer, Symphony and Twig. Working with this folder requires an advanced skillset that it outside of the scope of this project, but there are considerations to keep in mind. 
+The ```vendor/``` folder contains **required project dependencies** for Composer, Symphony and Twig. Working with this folder requires an advanced skillset that it outside of the scope of this project, but there are considerations to keep in mind. 
 
 In an effort to maximize project management efficiency, it is best to upload this folder to the server at a time when the server is least busiest as this process can be expensive. As well, when creating a project that *does not* require modification of external dependencies, *do NOT* add this folder to version control as you can run the command ```composer update``` to retrieve the most up-to-date version of all required dependencies.  Composer suggests:
 > If you are using git for your project, you probably want to add ```vendor/``` to the ```.gitignore```. You really don't want to add all of that third-party code to your versioned repository.
@@ -45,7 +45,7 @@ The ```"author":``` property acknowledges project developers using sub-propertie
 
 Learn more about [basic usage](https://getcomposer.org/doc/01-basic-usage.md), configuring [composer.json](https://getcomposer.org/doc/04-schema.md), using [composer commands](https://composer.json.jolicode.com/) and modifying [JSON Schema](http://json-schema.org) [properties](https://getcomposer.org/doc/04-schema.md#properties).
 
-The ```composer.lock``` file *defines dependencies and vendors* that are currently installed in the ```vendor/``` folder. This file is significant in that the state of dependencies are *locked* in a specified version, and as such, *should always be committed to version control*, which ensures that the same dependencies used during development are also used during production. There is no need to manully modify this file, however, when the time arises to update dependencies, run this command:
+The ```composer.lock``` file **defines dependencies and vendors** that are currently installed in the ```vendor/``` folder. This file is significant in that the state of dependencies are *locked* in a specified version, and as such, *should always be committed to version control*, which ensures that the same dependencies used during development are also used during production. There is no need to manully modify this file, however, when the time arises to update dependencies, run this command:
 >```composer install```
 
 
