@@ -2,15 +2,15 @@
 Template Layout System that Combines PHP and Twig
 
 1. Installing Twig
-2. Project Directory 
-    i.  Instantiated Files & Folder
-    ii.  Additional Files & Folders
+2. Project Directory  
+  i.  Instantiated Files & Folder
+  ii.  Additional Files & Folders
 3. Extending Twig with Functions
 4. Designing with Twig
 5. TBD
 
 ## Installing Twig
-*This project utilizes [Twig v2.0](https://twig.symfony.com/), which requires PHP 7.*
+*This project utilizes [Twig v2](https://twig.symfony.com/) and requires PHP 7.*
 
 To install Twig, open the console and ```cd..``` to  project folder. Then, run the following command:
 > ```composer require "twig/twig:^2.0"```
@@ -61,20 +61,29 @@ After outlining the ```composer.json``` file with suitable properties, prepare a
 
 ![Project Directory](public/img/projectDIR.png)
 
-The ```README.md``` file is a form of documentation that provides users with pertinent information that instructs them on how to implement a project. Provided explanations and screenshots enhances the level of engagement for users, which is encouraging. This file is commonly written using the markdown language, but can be written in any text format. There is no standard practice for writing such a file as the requirements for all projects vary. However, it is common to include instructions for configuration and installation, copyright and licensing information, credits and acknowledgments, a changelog, and troubleshooting ideas, if applicable. 
+The ```README.md``` file is a **form of documentation** that provides users with pertinent information that instructs them on how to implement a project. Provided explanations and screenshots enhances the level of engagement for users, which is encouraging. This file is commonly written using the markdown language, but can be written in any text format. There is no standard practice for writing such a file as the requirements for all projects vary. However, it is common to include instructions for configuration and installation, copyright and licensing information, credits and acknowledgments, a changelog, and troubleshooting ideas, if applicable. 
 
-![README.md](public/img/readme.png)
+![README Markup](public/img/readme.png)
 
 The above illustration outlines how such a file is written using the markdown language while the illustration below highlights how that markdown will be presented to users. 
 
-![README.md](public/img/readme2.png)
+![README Presentation](public/img/readme2.png)
 
-Learn more about [README.md](https://en.wikipedia.org/wiki/README) and [how to make a readme](https://makeareadme.com).
+Learn more about [README.md](https://en.wikipedia.org/wiki/README), the [cheatsheet](https://www.markdownguide.org/cheat-sheet/) and [how to make a readme](https://makeareadme.com).
 
+---
 
+The ```public/``` folder **contains all assets and content that is viewable** by users. To quickly jumpstart a project, it is imperative to include an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder, an ```img/``` folder and perhaps a ```js/``` folder.
+
+![Public Directory](public/img/publicDIR.png)
 <!--
-The ```public/``` folder
+The ```index.php``` file
+The ```.htaccess``` file
+The ```css/``` folder !
+[CSS Directory](public/img/cssDIR.png)
+The ```js/``` folder 
+---
 The ```templates/``` folder
-After install, setup a ```public/``` folder to contain the content that will be *viewable* by users. At the start of any project, you will require an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder and an ```img/``` folder.
+![Templates Directory](public/img/templatesDIR.png)
 Next, setup a ```templates/``` folders to hold ```.twig``` template files, which are *extendable components* of the ```base.twig``` file, which is the singular-template that *contains the `<html>` structure for the site*.
 -->
