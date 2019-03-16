@@ -17,7 +17,7 @@ To install Twig, open the console and ```cd..``` to  project folder. Then, run t
 
 
 ## Project Directory [Part 1]
-Once installation is complete, the project will house the ```vendor/``` folder as well as the ```composer.json``` and ```composer.lock``` files in its directory. 
+Once installation is complete, the project will house the ```vendor/``` folder as well as the ```composer.json``` and ```composer.lock``` files in its directory. *The `.git` file was instantiated when setting up this project on Github. Pay no attention to that `.git` behind the curtain!*
 
 ![Main Directory](public/img/mainDIR.png)
 
@@ -28,6 +28,8 @@ In an effort to maximize project management efficiency, it is best to upload thi
 
 Composer suggests:
 > If you are using git for your project, you probably want to add ```vendor/``` to the ```.gitignore```. You really don't want to add all of that third-party code to your versioned repository.
+
+---
 
 The ```composer.json``` file is the **root package**, which defines project requirements and is the resource used by developers to declare project dependencies that Composer will manage. Composer uses a JSON schema to provide human and machine readable documentation of this file which can also validate file content.
 
@@ -50,6 +52,8 @@ The ```"license":``` property details the package license, if any.
 The ```"author":``` property acknowledges project developers using an array of sub-properties that identifies devs by name, email, hompage or role.
 
 Learn more about [basic usage](https://getcomposer.org/doc/01-basic-usage.md), configuring [composer.json](https://getcomposer.org/doc/04-schema.md), using [composer commands](https://composer.json.jolicode.com/), and modifying [JSON Schema](http://json-schema.org) and their properties [properties](https://getcomposer.org/doc/04-schema.md#properties).
+
+---
 
 The ```composer.lock``` file **defines dependencies and vendors** that are currently installed in the ```vendor/``` folder. This file is significant in that the state of dependencies are *locked* in a specified version, and as such, *should always be committed to version control*, which ensures that the same dependencies used during development are also used during production. There is no need to manually modify this file, however, when the time arises to update dependencies, run this command:
 >```composer install```
@@ -76,6 +80,8 @@ Learn more about [README.md](https://en.wikipedia.org/wiki/README), the [cheatsh
 The ```public/``` folder **contains all assets and content that is viewable** by users. To quickly jumpstart a project, it is imperative to include an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder, an ```img/``` folder and perhaps a ```js/``` folder.
 
 ![Public Directory](public/img/publicDIR.png)
+
+# * ~TO BE CONTINUED~ *
 <!--
 The ```index.php``` file
 The ```.htaccess``` file
