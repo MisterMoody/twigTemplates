@@ -1,8 +1,6 @@
 { 
   "name": "MisterMoody/twigTemplates",
-  "description": "Template Layout System that Combines PHP and Twig",
-  "version": "0.1.0",
-  "type": "PHP Template",
+  "description": "PHP / Twig Template Layout",
   "homepage": "https://github.com/MisterMoody/twigTemplates",
   "time": "2019-03-14",
   "license": "none (use as will)",
@@ -16,3 +14,4 @@
     "twig/twig": "2.0"
   }
 }
+
