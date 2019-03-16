@@ -3,8 +3,8 @@ Template Layout System that Combines PHP and Twig
 
 1. Installing Twig
 2. Project Directory 
-  1.  Instantiated Files & Folder
-  2.  Additional Files & Folders
+    i.  Instantiated Files & Folder
+    ii.  Additional Files & Folders
 3. Extending Twig with Functions
 4. Designing with Twig
 5. TBD
@@ -16,7 +16,7 @@ To install Twig, open the console and ```cd..``` to  project folder. Then, run t
 > ```composer require "twig/twig:^2.0"```
 
 
-## Project Directory [Part 1: Instantiated Files & Folder]
+## Project Directory [Part 1]
 Once installation is complete, the project will house the ```vendor/``` folder as well as the ```composer.json``` and ```composer.lock``` files in its directory. 
 
 ![Main Directory](public/img/mainDIR.png)
@@ -56,7 +56,7 @@ The ```composer.lock``` file **defines dependencies and vendors** that are curre
 
 
 
-## Project Directory [Part 2: Added Files & Folder]
+## Project Directory [Part 2]
 After outlining the ```composer.json``` file with suitable properties, prepare a ```README.md``` file and two folders: one named ```public/``` and another named ```templates/```.
 
 ![Project Directory](public/img/projectDIR.png)
