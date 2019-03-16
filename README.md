@@ -3,14 +3,12 @@ Template Layout System that Combines PHP and Twig
 
 1. Installing Twig
 2. Project Directory  
-  i.  Instantiated Files & Folder
-  ii.  Additional Files & Folders
 3. Extending Twig with Functions
 4. Designing with Twig
 5. TBD
 
 ## Installing Twig
-*This project utilizes [Twig v2](https://twig.symfony.com/) and requires PHP 7.*
+*This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7.*
 
 To install Twig, open the console and ```cd..``` to  project folder. Then, run the following command:
 > ```composer require "twig/twig:^2.0"```
