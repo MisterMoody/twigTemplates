@@ -87,10 +87,11 @@ The `js/` folder **stores javascript which creates functionality**. This project
 
 ---
 
-![Index File](public/img/htaccess.png)
-The `.htaccess` file is a configuration file that alters the configuration of the Apache Web Server to enable functionality and features that the server software has to offer. Some common features include password-protection, URL redirects and custom error pages. 
+The `.htaccess` file is **a configuration file that alters the configuration of the Apache Web Server to enable functionality and features** that the server software has to offer. Some common features include password-protection, URL redirects and custom error pages. 
 
-This project file incorporates the `mod_rewrite` module, which uses a rule-based rewriting engine to rewrite requested URLs. By default, mod_rewrite maps a URL to a filesystem path. Its initial setup begins by setting up the tag `<IfModule mod_rewrite.c></IfModule>` to contain the following directives:
+![Index File](public/img/htaccess.png)
+
+This project file incorporates the `mod_rewrite` module, which uses **a rule-based rewriting engine to rewrite requested URLs**. By default, mod_rewrite maps a URL to a filesystem path. Its initial setup begins by setting up the tag `<IfModule mod_rewrite.c></IfModule>` to contain the following directives:
 
 The `RewriteEngine On` directive **enables (or disables) the runtime rewriting engine**.
 
@@ -99,7 +100,7 @@ The `RewriteBase` directive **specifies the URL prefix** to be used for per-dire
 
 The `RewriteCond` directive **defines a rule condition**. One or more RewriteCond can precede a RewriteRule directive. The following rule is then only used if both the current state of the URI matches its pattern, and if these conditions are met.
 
-The `.htaccess` file can do *much more* than rewrite URLS! Learn more about the `.htaccess` [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
+The `.htaccess` file can do *much more* than rewrite URLS! Learn more about the [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html).
 
 <!--
 ---
