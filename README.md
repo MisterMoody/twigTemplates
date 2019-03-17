@@ -81,7 +81,7 @@ The ```public/``` folder **contains all assets and content that is viewable** by
 
 The `css/` folder **stores cascading stylesheets that determine the sites presentation**. The styles for this project consist of a `grid.css` file and a `main.css` file.  The former is a stylesheet that employs the `{display: grid;}` declaration on specified sections of a page in order to create an overall grid layout structure. The latter stylesheet contains universal and general styles that adds aesthetic value to the page.
 
-The `img/` folder **stores images and screenshots**.
+The `img/` folder **stores the screenshots** or other imagery to enhance text content.
 
 The `js/` folder **stores javascript which creates functionality**. This project has a single script, `siteNav.js`, that provides the functionality for the global navigation system.
 
