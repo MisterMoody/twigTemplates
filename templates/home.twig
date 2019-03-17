@@ -3,26 +3,47 @@
 {# Browser Tab Title #}
 {% block title %}Home{% endblock %}
 
-{# 'head' Additions 
-    Style h3 Tags with Monochromatic Color
-#}
 {% block head%}
 {{ parent() }}
-<style type="text/css"> h3 {
-  background: -webkit-linear-gradient(#111, #838487);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;} </style>
 {% endblock %}
 
 {% block content %}
-<section>
-  <div>
-    <h1>Home Page Layout</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas integer eget aliquet nibh. Diam vulputate ut pharetra sit amet aliquam id diam maecenas. </p>
-    <p>Velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Fames ac turpis egestas maecenas pharetra convallis posuere. Vitae turpis massa sed elementum. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Bibendum enim facilisis gravida neque convallis a cras semper auctor.</p>
-    <p>Pulvinar neque laoreet suspendisse interdum. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque viverra. Posuere urna nec tincidunt praesent semper. Tincidunt ornare massa eget egestas purus. Eget mauris pharetra et ultrices neque ornare aenean euismod. </p>
-  </div>
-</section>
+    <div class="viewMobile">
+      <image src="img/tailorVanilla.jpg" class="mainImage"></image>
+    </div>
+    <div>
+      <p class="mainText1">Non-traditional educator with a plethora of experiences delivering language acquisition services for private and public institutions of education in China, Japan, South Korea and the United States.
+      </p>
+      <p class="mainText2">Self-taught web implementation specialist able to proficiently design, develop and deploy a web application to specification.</p>
+      <!--<h4><a href="about.php" class="btn">Learn More</a></h4>-->
+    </div>
+    <!-- SOCIAL-MEDIA Links -->
+    <div>
+      <br>
+      <ul class="social">
+        <li>
+          <a class="github" href="https://github.com/MisterMoody" alt="Github" target="_blank" title="Check Out My Work on Github">
+          <i class="fa fa-github-alt fa-2x" aria-hidden="true"></i></a>
+        </li>
+        <li>
+          <a class="twitter" href="https://twitter.com/Mister_Moody" alt="Twitter" target="_blank" title="Follow Me on Twitter">
+          <i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+        </li>
+        <!--<li>
+          <a class="download" src="moodyCV.doc" href="moodyCV.docx" title="Download My Resume"  alt="Download My Resume">
+          <i class="fa fa-cloud-download fa-2x" aria-hidden="true"></i></a>
+        </li>-->
+        <li>
+          <a class="phone" href="tel:+15025589240" alt="Call Me" title="Phone Number">
+          <i class="fa fa-mobile fa-2x" aria-hidden="true"></i></a>
+        </li>
+        <li>
+          <a class="email" href="mailto: principal@mistermoody.com" alt="Email Me" title="Email Me">
+          <i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+      <br>
+    </div>
       <!-- //CONTENT-BEGINS..... -->
         <!--<section class="">
           {# Nav Key are placed on Top Line 
