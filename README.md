@@ -8,7 +8,7 @@ Template Layout System that Combines PHP and Twig
 5. TBD
 
 ## Installing Twig
-*This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7.*
+*This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7. Prerequisite knowledge of `html`, `css`, `javascript`, `json` and `php` is required.*
 
 To install Twig, open the console and ```cd..``` to  project folder. Then, run the following command:
 > ```composer require "twig/twig:^2.0"```
@@ -75,19 +75,46 @@ Learn more about [README.md](https://en.wikipedia.org/wiki/README), the [cheatsh
 
 ---
 
-The ```public/``` folder **contains all assets and content that is viewable** by users. To quickly jumpstart a project, it is imperative to include an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder, an ```img/``` folder and perhaps a ```js/``` folder.
+The ```public/``` folder **contains all assets and content that is viewable** by users. To quickly jumpstart a project, it is imperative to include an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder, an ```img/``` folder and a ```js/``` folder.
 
 ![Public Directory](public/img/publicDIR.png)
 
+The `css/` folder **stores cascading stylesheets that determine the sites presentation**. The styles for this project consist of a `grid.css` file and a `main.css` file.  The former is a stylesheet that employs the `{display: grid;}` declaration on specified sections of a page in order to create an overall grid layout structure. The latter stylesheet contains universal and general styles that adds aesthetic value to the page.
+
+The `img/` folder **stores images and screenshots**.
+
+The `js/` folder **stores javascript which creates functionality**. This project has a single script, `siteNav.js`, that provides the functionality for the global navigation system.
+
+---
+
+![Index File](public/img/htaccess.png)
+The `.htaccess` file is a configuration file that alters the configuration of the Apache Web Server to enable functionality and features that the server software has to offer. Some common features include password-protection, URL redirects and custom error pages. 
+
+This project file incorporates the `mod_rewrite` module, which uses a rule-based rewriting engine to rewrite requested URLs. By default, mod_rewrite maps a URL to a filesystem path. Its initial setup begins by setting up the tag `<IfModule mod_rewrite.c></IfModule>` to contain the following directives:
+
+The `RewriteEngine On` directive **enables (or disables) the runtime rewriting engine**.
+
+The `RewriteBase` directive **specifies the URL prefix** to be used for per-directory (htaccess) `RewriteRule` directives that substitute a *relative path*, and is required when you use a relative path.
+*(In Apache HTTP Server 2.4.16 and later, this directive may be omitted when the request is mapped via Alias or mod_userdir.)*
+
+The `RewriteCond` directive **defines a rule condition**. One or more RewriteCond can precede a RewriteRule directive. The following rule is then only used if both the current state of the URI matches its pattern, and if these conditions are met.
+
+The `.htaccess` file can do *much more* than rewrite URLS! Learn more about the `.htaccess` [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
+
+<!--
+---
+The ```index.php``` file is like **a storage facility for the functionality** of the project. A basic setup will (a) make a call to the TWIG API autoloader to require the Composer autoload File, (b) load templates from the `templates/` folder and (c) establish rendering methods for pages and variables. In the illustration below, a `$nav` variable is used for global navigation (more on this later).
+![Index File](public/img/indexPHP.png)
+-->
+
 # * ~TO BE CONTINUED~ *
 <!--
-The ```index.php``` file
 The ```.htaccess``` file
 The ```css/``` folder !
 [CSS Directory](public/img/cssDIR.png)
 The ```js/``` folder 
 ---
-The ```templates/``` folder
+The ```templates/``` folder is like **a storage facility for the basic layout and template content that it inherits** (more on this later).
 ![Templates Directory](public/img/templatesDIR.png)
 Next, setup a ```templates/``` folders to hold ```.twig``` template files, which are *extendable components* of the ```base.twig``` file, which is the singular-template that *contains the `<html>` structure for the site*.
 -->
