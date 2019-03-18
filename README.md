@@ -100,22 +100,46 @@ The `RewriteBase` directive **specifies the URL prefix** to be used for per-dire
 
 The `RewriteCond` directive **defines a rule condition**. One or more RewriteCond can precede a RewriteRule directive. The following rule is then only used if both the current state of the URI matches its pattern, and if these conditions are met.
 
-The `.htaccess` file can do *much more* than rewrite URLS! Learn more about the [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html).
+The `.htaccess` file can do amazing things, but working with this file depends on the state of that project. During development, this file should be placed in the `public/` folder, however, during production this file should be placed in the root directory. Learn more about the [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html).
+
+The ```index.php``` file is like **a storage facility for the functionality** of the project. This file is setup to (a) register the TWIG API, (b) load templates from the `templates/` folder and (c) establish rendering methods for templates and the `$nav` variable that will create the sites overall global navigation. 
+---
+![Index File](public/img/indexPHP.png)
+The first line **registers a call to the autoloader** (Twig API) using [Composers](https://getcomposer.org) built-in `autoload` function.
+> `require_once __DIR__ . '/../vendor/autoload.php';`
+
+This function automates the process for updating dependencies, which will ensure that the latest version for all dependencies are readily available. Without going in-depth, this short line of code does the heavy lifting for the `composer.json` and `composer.lock` files.
+
+Learn more about Composers [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) funtion.
+
+The next two lines create an *environment* that accesses the `$loader` variable to properly amalgamate the two. 
+---
+The first part establishes the loader, which will **load templates from the file system**, database or other resources. Although absolute paths are supported, relative paths are preferred as it makes the cache keys independent of the root directory.
+> `$loader = new Twig_Loader_Filesystem(__DIR__ . '/../templates');`
+
+The second part establishes the environment constructor, which is a **class instance used to store configurations and load templates from other locations**.
+> `$twig = new Twig_Environment($loader);`
+
+The constructor can accept a second argument in the form of an an array.
+> `$twig = new Twig_Environment($loader, ['debug' => true]);`
+
+Some of the available options include:
+Options | Value 
+------- | -------
+debug | boolean  (enable/disable node display)
+charset | string (utf-8 template charset)
+cache | string (absolute path to templates)
+auto_reload | boolean (recompiles templates)
+autoescape | string (sets default strategy)
+optim
 
 <!--
----
-The ```index.php``` file is like **a storage facility for the functionality** of the project. A basic setup will (a) make a call to the TWIG API autoloader to require the Composer autoload File, (b) load templates from the `templates/` folder and (c) establish rendering methods for pages and variables. In the illustration below, a `$nav` variable is used for global navigation (more on this later).
-![Index File](public/img/indexPHP.png)
+**GLOBAL NAVIGATION**
+In the illustration above, a `$nav` variable is used for global navigation (more on this later).
 -->
+
+Finally, the `if() {} else {}` statement is used to **render templates** for pages setup to access the routing method applied to the `$nav` variable (more on this later). Although this file invokes an elaborate ploy to establish a global navigation system, a render method need not possess more than the following: 
+> `echo $twig->render('xxx.twig', ['nav' => $nav]);`
+
 
 # * ~TO BE CONTINUED~ *
-<!--
-The ```.htaccess``` file
-The ```css/``` folder !
-[CSS Directory](public/img/cssDIR.png)
-The ```js/``` folder 
----
-The ```templates/``` folder is like **a storage facility for the basic layout and template content that it inherits** (more on this later).
-![Templates Directory](public/img/templatesDIR.png)
-Next, setup a ```templates/``` folders to hold ```.twig``` template files, which are *extendable components* of the ```base.twig``` file, which is the singular-template that *contains the `<html>` structure for the site*.
--->
