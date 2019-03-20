@@ -5,7 +5,7 @@ Template Layout System that Combines PHP and Twig
 2. Project Directory  
 3. Extending Twig with Functions
 4. Designing with Twig
-5. TBD
+5. Troubleshooting
 
 ## Installing Twig
 *This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7. Prerequisite knowledge of `html`, `css`, `javascript`, `json` and `php` is required.*
@@ -109,9 +109,7 @@ The ```index.php``` file is like **a storage facility for the functionality** of
 The first line **registers a call to the autoloader** (Twig API) using [Composers](https://getcomposer.org) built-in `autoload` function.
 > `require_once __DIR__ . '/../vendor/autoload.php';`
 
-This function automates the process for updating dependencies, which will ensure that the latest version for all dependencies are readily available. Without going in-depth, this short line of code does the heavy lifting for the `composer.json` and `composer.lock` files.
-
-Learn more about Composers [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) function.
+This function automates the process for updating dependencies, which will ensure that the latest version for all dependencies are readily available. Without going in-depth, this short line of code does the heavy lifting for the `composer.json` and `composer.lock` files. Learn more about Composers [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) function.
 
 The next two lines create an *environment* that accesses the `$loader` variable to properly amalgamate the two. 
 
@@ -128,33 +126,35 @@ Some of the available options include:
 
 | Options | Value |
 | ------- | ------- |
-| debug | boolean  (enable/disable node display) |
-| charset | string (utf-8 template charset) |
-| cache | string (absolute path to templates) |
-| auto_reload | boolean (recompiles templates) |
-| autoescape | string (sets default strategy) |
+| debug | boolean  *(enable/disable node display)*|
+| charset | string *(utf-8 template charset)* |
+| cache | string *(absolute path to templates)* |
+| auto_reload | boolean *(recompiles templates)* |
+| autoescape | string *(sets default strategy)* |
 
 <!--
 **GLOBAL NAVIGATION**
 In the illustration above, a `$nav` variable is used for global navigation (more on this later).
 -->
 
-Finally, the `if() {} else {}` statement is used to **render templates** for pages setup to access the routing method applied to the `$nav` variable (more on this later). Although this file invokes an elaborate ploy to establish a global navigation system, a render method need not possess more than the following: 
+Finally, the `if() {} else {}` statement is used to **render templates** for pages setup to access the routing method applied to the `$nav` variable. The method applied in this project establishes a global navigation system , the basis of which consists of:
 > `echo $twig->render('xxx.twig', ['nav' => $nav]);`
 
+The statement dictates which page the user views based on their decision; the `['nav' => $nav]` object within the array facilitates this function, sending the user to their preferred destination.
 
 # * ~TO BE CONTINUED~ *
 <!--
-*All rendered templates are stored in the `template/` folder.
-Variables can be accessed in any `xxx.twig` file by  placing the variable (without the '$') inside of **Output Tag**.
-> `{{ variable }}`
-*EXPLAIN: Add Filters/Functions to 'Output TAGS'
+*As stated, the `index.php` file will *render* twig templates when called. The ```templates/``` folder is essentially **a storage facility for the basic layout and template content that it inherits** (more on this later). The only kind of files that exist here end with the `.twig` extension.
 *
-The ```templates/``` folder is like **a storage facility for the basic layout and template content that it inherits** (more on this later).
 ![Templates Directory](public/img/templatesDIR.png)
-Next, setup a ```templates/``` folders to hold ```.twig``` template files, which are *extendable components* of the ```base.twig``` file, which is the singular-template that *contains the `html` structure for the site*.
-The `base.twig` file is the main template.
+*
+This project has four templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates rely on to *inherit* stylesheets and scripts for a uniform presentation of the site across pages. 
+*
 The `home.twig` file 
 The `about.twig` file 
 The `contact.twig` file 
+*
+Variables can be accessed in any `xxx.twig` file by  placing the variable (without the '$') inside of **Output Tag**.
+> `{{ variable }}`
+*EXPLAIN: Add Filters/Functions to 'Output TAGS'
 -->
