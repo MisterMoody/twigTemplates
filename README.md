@@ -163,26 +163,18 @@ Variables can be accessed in any `xxx.twig` file by  placing the variable (witho
 There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* No so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
 
 A. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. This link
-> ``` html
-href="css/fileName.css"
-```
+> `href="css/fileName.css"`
 
 should look like this link
-> ``` html
-href="public/css/fileName.css"
-```
+> `href="public/css/fileName.css"`
 
 during production.
 
 B. Amend the `src=""` path for *ALL* images. The path for this image
-> ``` html
-src="img/fileName.jpg"
-```
+> `src="img/fileName.jpg"`
 
 should look like this link
-> ``` html
-src="public/img/fileName.jpg"
-```
+> `src="public/img/fileName.jpg"`
 
 during production.
 
