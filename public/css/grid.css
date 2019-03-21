@@ -10,7 +10,7 @@ article {
   padding: 0 auto;
   min-height: 100vh;
 	display: grid;
-  grid-template-rows: auto 100% auto;
+  grid-template-rows: auto repeat(auto-fit, 1fr) auto;
 	grid-gap: 0px;
 }
 main {
@@ -18,12 +18,6 @@ main {
 }
 
 @media only screen and (min-width: 800px) {
-  article {
-    margin: 0 0vw;
-    padding: 0 auto;
-    display: grid;
-    grid-template-rows: auto 100% auto;
-  }
   main {
     margin: 0vh 6vw;
   }
@@ -134,7 +128,7 @@ Convert Grid
 .email {grid-area: email;}
 .phone {grid-area: phone;}
 ul.social {
-  margin: 0;
+  margin: 0 0 0.5em 0;
   padding: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, auto);
