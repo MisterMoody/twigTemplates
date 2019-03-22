@@ -149,6 +149,19 @@ This project has four templates, but three of them are *extendable components* o
 
 *This is the beauty of templating: having one file to control the entire site view!*
 
+
+# Building a Navigation System
+The setup for the navigation system used in this project was created based on the following procedures: 
+1. Define the `$nav` Variable
+2. Create `.twig` File to Contain `<nav>` 
+3. Pass the `.twig` File to `base.twig`
+4. Setup `<nav>` Routing
+
+
+
+
+The statement relies on the `['nav' => $nav]` object within the array to facilitate navigational functionality based on the users selection.
+
 # Troubleshooting
 There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* No so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
 
