@@ -3,9 +3,10 @@ Template Layout System that Combines PHP and Twig
 
 1. Installing Twig
 2. Project Directory  
-3. Extending Twig with Functions
-4. Designing with Twig
-5. Troubleshooting
+3. Building a Navigation System
+4. Extending Twig with Functions
+5. Designing with Twig
+6. Troubleshooting
 
 ## Installing Twig
 *This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7. Prerequisite knowledge of `html`, `css`, `javascript`, `json` and `php` is required.*
@@ -73,7 +74,7 @@ The above illustration outlines how such a file is written using the markdown la
 
 Learn more about [README.md](https://en.wikipedia.org/wiki/README), the [cheatsheet](https://www.markdownguide.org/cheat-sheet/) and [how to make a readme](https://makeareadme.com).
 
----
+### `public/`
 
 The ```public/``` folder **contains all assets and content that is viewable** by users. To quickly jumpstart a project, it is imperative to include an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder, an ```img/``` folder and a ```js/``` folder.
 
@@ -85,7 +86,7 @@ The `img/` folder **stores the screenshots** or other imagery to enhance text co
 
 The `js/` folder **stores javascript which creates functionality**. This project has a single script, `siteNav.js`, that provides the functionality for the global navigation system.
 
----
+#### `.htaccess`
 
 The `.htaccess` file is **a configuration file that alters the configuration of the Apache Web Server to enable functionality and features** that the server software has to offer. Some common features include password-protection, URL redirects and custom error pages. 
 
@@ -102,9 +103,9 @@ The `RewriteCond` directive **defines a rule condition**. One or more RewriteCon
 
 The `.htaccess` file can do amazing things, but working with this file depends on the state of that project. During development, this file should be placed in the `public/` folder, however, during production this file should be placed in the root directory. Learn more about the [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html).
 
----
+#### ```index.php```
 
-The ```index.php``` file is like **a storage facility for the functionality** of the project. This file is setup to (a) register the TWIG API, (b) load templates from the `templates/` folder and (c) establish rendering methods for templates and the `$nav` variable that will create the sites overall global navigation. 
+The ```index.php``` file is essentially **the M-V-Controller** of the project. This file is setup to (a) register the TWIG API, (b) load templates from the `templates/` folder and (c) establish rendering methods for templates and the `$nav` variable that will create the sites overall global navigation. 
 
 ![Index File](public/img/indexPHP.png)
 
@@ -134,49 +135,35 @@ Some of the available options include:
 | auto_reload | boolean *(recompiles templates)* |
 | autoescape | string *(sets default strategy)* |
 
-
-Finally, the `if() {} else {}` statement is used to **render templates** for pages setup to access the routing method applied to the `$nav` variable. The method applied in this project establishes a global navigation system , the basis of which consists of:
+Finally, the `if() {} else {}` statement is used to establish **Routing** methods for a global navigation system based on the `$nav` variable defined above it. The statement directs the user to a desired page using the `render()` method as illustrated below:
 > `echo $twig->render('xxx.twig', ['nav' => $nav]);`
 
-The statement relies on the `['nav' => $nav]` object within the array to facilitate navigational functionality based on the users selection.
+The setup for this system spans three pages and utilizes a routing strategy that is extensible. This topic is thoroughly explained in the self-titled section below.
 
-# * ~TO BE CONTINUED~ *
+### `templates/` 
+The ```templates/``` folder is **a storage facility for the basic layout of a site, and template content that the layout template inherits**. The only kind of files that exist here end with the `.twig` extension.
 
-<!--
-*As stated, the `index.php` file will *render* twig templates when called. The ```templates/``` folder is essentially **a storage facility for the basic layout and template content that it inherits** (more on this later). The only kind of files that exist here end with the `.twig` extension.
-*
 ![Templates Directory](public/img/templatesDIR.png)
-*
-This project has four templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates rely on to *inherit* stylesheets and scripts for a uniform presentation of the site across pages. 
-*
-The `home.twig` file 
-The `about.twig` file 
-The `contact.twig` file 
-*
-Variables can be accessed in any `xxx.twig` file by  placing the variable (without the '$') inside of **Output Tag**.
-> `{{ variable }}`
-*EXPLAIN: Add Filters/Functions to 'Output TAGS'
--->
 
+This project has four templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is **extended** to other templates. These files are rendered by the `index.php` file. 
+
+*This is the beauty of templating: having one file to control the entire site view!*
 
 # Troubleshooting
 There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* No so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
 
-A. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. This link
+A. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. During production, this link
 > `href="css/fileName.css"`
 
 should look like this link
 > `href="public/css/fileName.css"`
 
-during production.
 
-B. Amend the `src=""` path for *ALL* images. The path for this image
+B. Amend the `src=""` path for *ALL* images. During production, the path for this image
 > `src="img/fileName.jpg"`
 
 should look like this link
 > `src="public/img/fileName.jpg"`
-
-during production.
 
 C. Place the `.htaccess` file at the *root* of the directory when uploading to the server so that it is a sibling of the `public/` directory as opposed to it being one of its children.
 
@@ -185,3 +172,11 @@ D. [NOT implemented here~]
 > `['cache' => "false"]
 
 
+# * ~TO BE CONTINUED~ *
+<!--
+*As previously stated, the `index.php` file will *render* twig templates when called. 
+*
+Variables can be accessed in any `xxx.twig` file by  placing the variable (without the '$') inside of **Output Tag**.
+'>' `{{ variable }}`
+*EXPLAIN: Add Filters/Functions to 'Output TAGS'
+-->
