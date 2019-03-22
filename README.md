@@ -20,6 +20,8 @@ Once installation is complete, the project will house the ```vendor/``` folder a
 
 ![Main Directory](public/img/mainDIR.png)
 
+### The ```vendor/``` Folder
+
 The ```vendor/``` folder contains **required project dependencies** for Composer, Symphony and Twig. Working with this folder requires an advanced skillset that is outside of the scope of this project, but there are considerations to keep in mind. 
 
 In an effort to maximize project management efficiency, it is best to upload this folder to the server at a time when the server is least active as this process can be expensive. As well, when creating a project that *does not* require modification of external dependencies, *do NOT* add this folder to version control. To retrieve the most up-to-date version of all required dependencies, run this command:
@@ -28,7 +30,7 @@ In an effort to maximize project management efficiency, it is best to upload thi
 Composer suggests:
 > If you are using git for your project, you probably want to add ```vendor/``` to the ```.gitignore```. You really don't want to add all of that third-party code to your versioned repository.
 
----
+### The ```composer.json``` File 
 
 The ```composer.json``` file is the **root package**, which defines project requirements and is the resource used by developers to declare project dependencies that Composer will manage. Composer uses a JSON schema to provide human and machine readable documentation of this file which can also validate file content.
 
@@ -52,7 +54,7 @@ The ```"author":``` property acknowledges project developers using an array of s
 
 Learn more about [basic usage](https://getcomposer.org/doc/01-basic-usage.md), configuring [composer.json](https://getcomposer.org/doc/04-schema.md), using [composer commands](https://composer.json.jolicode.com/), and modifying [JSON Schema](http://json-schema.org) and their properties [properties](https://getcomposer.org/doc/04-schema.md#properties).
 
----
+### The ```composer.lock``` file 
 
 The ```composer.lock``` file **defines dependencies and vendors** that are currently installed in the ```vendor/``` folder. This file is significant in that the state of dependencies are *locked* in a specified version, and as such, *should always be committed to version control*, which ensures that the same dependencies used during development are also used during production. There is no need to manually modify this file, however, when the time arises to update dependencies, run this command:
 >```composer install```
@@ -63,6 +65,8 @@ The ```composer.lock``` file **defines dependencies and vendors** that are curre
 After outlining the ```composer.json``` file with suitable properties, prepare a ```README.md``` file and two folders: one named ```public/``` and another named ```templates/```.
 
 ![Project Directory](public/img/projectDIR.png)
+
+### The ```README.md``` File
 
 The ```README.md``` file is a **form of documentation** that provides users with pertinent information that instructs them on how to implement a project. Provided explanations and screenshots enhances the level of engagement for users, which is encouraging. This file is commonly written using the markdown language, but can be written in any text format. There is no standard practice for writing such a file as the requirements for all projects vary. However, it is common to include instructions for configuration and installation, copyright and licensing information, credits and acknowledgments, a changelog, and troubleshooting ideas, if applicable. 
 
@@ -145,24 +149,50 @@ The ```templates/``` folder is **a storage facility for the basic layout of a si
 
 ![Templates Directory](public/img/templatesDIR.png)
 
-This project has four templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is **extended** to other templates. These files are rendered by the `index.php` file. 
+This project has six templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is [extended](https://twig.symfony.com/doc/2.x/tags/extends.html) to other templates. To extend layout structure to child-templates, simply add the following line as the first line: 
+> `{% extends "childTemplate.twig %}`
 
 *This is the beauty of templating: having one file to control the entire site view!*
 
 
-# Building a Navigation System
+## Building a Navigation System
 The setup for the navigation system used in this project was created based on the following procedures: 
 1. Define the `$nav` Variable
 2. Create `.twig` File to Contain `<nav>` 
 3. Pass the `.twig` File to `base.twig`
 4. Setup `<nav>` Routing
 
+The `$nav` variable is an array object defined in the `index.php` file. 
+
+![Nav Variable](public/img/navFunction.png)
+
+The array is composed of three inner-array items that contain `href`, `caption` and `status` properties, whose properties assign directory paths, list page name and ascertains page status, respectively. These properties are utilized across all pages, so establishing the criteria first is vital for creating a consistent flow. This array is passed directly to the `render()` method as an argument when setting up routes. The argument `['nav' => $nav]` helps facilitate navigational functionality based on the users selection
+
+Once the `$nav` variable is defined, their sub-array properties can be applied to `<nav>` HTML structure, the markup for which is housed in the `base.twig` and `nav-item.twig` files.
+
+![Nav Item](public/img/navItem.png)
+
+The `nav-item.twig` file is setup as the `<li>...</li>` HTML that will be *included* into the `base.twig` file. This `<li>` accesses all `$nav` variable properties through use of the Twig **variable syntax**:
+> `{{ item['xxx']}}` or `{{ item.xxx}}`
+
+![Nav for-Loop](public/img/navLoop.png)
+
+In the `base.twig` file, the `<ul>...</ul>` invokes a *for Loop* to loop through all items (ie pages) in the `$nav` array while including the `<li>` markup derived from the `nav-item.twig` file. Failure of the conditional statement here will return the user to the homepage.
+
+#### Routing
+
+Back in the `index.php` file, utilize the `if() {} else {}` conditional statement to establish routes and render methods for all items, that is, the site pages. 
+
+![Nav Routing](public/img/navRoutes.png)
+
+This statement uses the `substr()` function to *return a portion of a string specified by the start and length parameters* from the `$_SERVER[]` variable, which is a superglobal array that holds item/page *path* information. The `['REQUEST_URI']` array item *provides access to a specified URI* while the length of characters to check totals eight. The superglobal is then *compared against* the desired link: `'/pageLink'`. The formula used here, `if(){...} elseif() {...}...` can be repeated for every added page outside of the homepage.
+
+#### Rendering
+The code after the `} else {` at the bottom of the statement illustrates the ease of *rendering* a template. Simply modify the `$nav` inner-array properties to match the page and stage the `.twig` file to be used.
 
 
 
-The statement relies on the `['nav' => $nav]` object within the array to facilitate navigational functionality based on the users selection.
-
-# Troubleshooting
+## Troubleshooting
 There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* No so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
 
 A. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. During production, this link
@@ -185,10 +215,8 @@ D. [NOT implemented here~]
 > `['cache' => "false"]
 
 
-# * ~TO BE CONTINUED~ *
+## * ~TO BE CONTINUED~ *
 <!--
-*As previously stated, the `index.php` file will *render* twig templates when called. 
-*
 Variables can be accessed in any `xxx.twig` file by  placing the variable (without the '$') inside of **Output Tag**.
 '>' `{{ variable }}`
 *EXPLAIN: Add Filters/Functions to 'Output TAGS'
