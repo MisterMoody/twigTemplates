@@ -114,6 +114,88 @@ ul.social {
 /**//***********************************//**/
 
 
+/*******************************************/
+/** SKILLS & TRAINING GRID ******************/
+/* Training & Skills GRID-Table/Row for ABOUT.php */
+.grid-table {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  /*font-size: 0.82em;*/
+}
+.grid-row {
+  display: subgrid;
+  grid-template-rows: 1fr;
+  /*font-size: 0.82em;*/
+}
+.grid-table > span:nth-child(4n+1),
+.grid-table > span:nth-child(4n+2) {
+  background-color:#838487;
+  font-size: 0.88em;
+}
+.grid-table > span:nth-child(4n+3),
+.grid-table > span:nth-child(4n+4) {
+  /*background-color: #B93A32;*/
+  margin-bottom: 8px;
+  font-size: 0.68em;
+}
+/*Decrease Size of 'Long-string Content' 
+.grid-table > span.smallSpan {
+  font-size: 0.54em;
+}*/
+@media only screen and (min-width: 800px){
+  .grid-table {
+  grid-template-columns: 90px 1fr;
+  }
+  .grid-table > span:nth-child(4n+3),
+  .grid-table > span:nth-child(4n+4){
+    /*font-size: 0.88em;*/
+  }
+  /*Decrease Size of 'Long-string Content' */
+  .grid-table > span.smallSpan {
+    font-size: 0.6em;
+  }
+  .grid-row {
+    grid-row-gap: 4px;
+    /*font-size: 0.88em;*/ 
+  }
+}
+/*
+*/
+/* WORK-Experience Grid */  
+.trainingGrid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: repeat(autofit, minmax(15px, auto));
+  font-size: 0.65em;
+  grid-row-gap: 4px; 
+}
+.trainingGrid > span:nth-child(4n+1),
+.trainingGrid > span:nth-child(4n+2) {
+  background-color: #838487;
+}
+
+/*aside > div.trainingGrid {}*/
+@media only screen and (min-width: 500px){
+  .trainingGrid {
+    grid-template-columns: 132px 1fr;
+    font-size: 0.71em;
+  }
+}
+@media only screen and (min-width: 800px){
+  .trainingGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: 1px;
+    /*font-size: 0.88em;*/
+  }
+  .trainingGrid > p {text-align: right; margin: 0 auto; padding: 0;}
+}
+/**//***********************************/
+/*
+*/
+
+/**//***********************************/
 
 
 /*******************************************/
