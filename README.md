@@ -78,7 +78,7 @@ The above illustration outlines how such a file is written using the markdown la
 
 Learn more about [README.md](https://en.wikipedia.org/wiki/README), the [cheatsheet](https://www.markdownguide.org/cheat-sheet/) and [how to make a readme](https://makeareadme.com).
 
-### `public/`
+### The `public/` Folder
 
 The ```public/``` folder **contains all assets and content that is viewable** by users. To quickly jumpstart a project, it is imperative to include an ```index.php``` file, an ```.htaccess``` file, a ```css/``` folder, an ```img/``` folder and a ```js/``` folder.
 
@@ -90,7 +90,7 @@ The `img/` folder **stores the screenshots** or other imagery to enhance text co
 
 The `js/` folder **stores javascript which creates functionality**. This project has a single script, `siteNav.js`, that provides the functionality for the global navigation system.
 
-#### `.htaccess`
+#### The `.htaccess` File
 
 The `.htaccess` file is **a configuration file that alters the configuration of the Apache Web Server to enable functionality and features** that the server software has to offer. Some common features include password-protection, URL redirects and custom error pages. 
 
@@ -107,7 +107,7 @@ The `RewriteCond` directive **defines a rule condition**. One or more RewriteCon
 
 The `.htaccess` file can do amazing things, but working with this file depends on the state of that project. During development, this file should be placed in the `public/` folder, however, during production this file should be placed in the root directory. Learn more about the [mod_rewrite rules](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html).
 
-#### ```index.php```
+#### The ```index.php``` File
 
 The ```index.php``` file is essentially **the M-V-Controller** of the project. This file is setup to (a) register the TWIG API, (b) load templates from the `templates/` folder and (c) establish rendering methods for templates and the `$nav` variable that will create the sites overall global navigation. 
 
@@ -144,7 +144,7 @@ Finally, the `if() {} else {}` statement is used to establish **Routing** method
 
 The setup for this system spans three pages and utilizes a routing strategy that is extensible. This topic is thoroughly explained in the self-titled section below.
 
-### `templates/` 
+### The `templates/` Folder
 The ```templates/``` folder is **a storage facility for the basic layout of a site, and template content that the layout template inherits**. The only kind of files that exist here end with the `.twig` extension.
 
 ![Templates Directory](public/img/templatesDIR.png)
