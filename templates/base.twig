@@ -8,12 +8,12 @@
     <meta name='description' content='' />
     <meta name="keywords" content="" />
     <!-- Page Title -->
-    <title>{% block title %}{% endblock %} -  Templating with TWIG</title>
+    <title>{% block title %}{% endblock %}</title>
     <!-- Browser Tab Icon -->
     <link rel="shortcut icon" href="" type="img/m" class="rounded">    
     <!-- Custom CSS Styles -->   
-    <link rel="stylesheet" href="public/css/main.css">
-    <link rel="stylesheet" href="public/css/grid.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/grid.css">
     <!-- Custom Fonts -->       
 	  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Raleway" rel="stylesheet">
     <!-- FontAwesome CSS Fonts -->
@@ -21,9 +21,7 @@
   </head>
   {% endblock %}
   <body>
-  <!-- ********************************************************* -->
-  <!-- ********************************************************* -->
-
+  <!-- ************************************** -->
 		<!-- //'start of' MAIN GRID CONTAINER-->	
     <article>  
       <!-- //NAVIGATION -->
@@ -31,9 +29,10 @@
         <span class="navbar-toggle" id="js-navbar-toggle">
           <i class="fa fa-bars"></i>
         </span>
-        <a href="/" class="logo">Twig Templating</a>
+        <a href="/" class="logo">MisterMoody</a>
         <ul class="main-nav" id="js-menu">
           {# Conditional for Navigation Item located in 'nav-item.twig' #}
+          {# Will Loop-through Each Item in Array #}
           {% for item in nav %}
           {{ include("nav-item.twig") }}
           {% else %}
@@ -43,12 +42,6 @@
             </a>
           </li>
           {% endfor %}
-          <!--<li>
-            <a href="work.php" class="nav-links">Work</a>
-          </li>
-          <li>
-            <a href="contact.php" class="nav-links">Contact</a>
-          </li>-->
         </ul>
       </nav>
       <!-- //END of Navigation -->
@@ -63,19 +56,15 @@
       <!-- //FOOTER --> 
       {% block footer %}
       <footer class="credit">
-        <small>&#169;<span>2015 - {{ "now"|date('Y')}}</span>&nbsp;&nbsp; <b>x</b></small>
+        <small>&#169;<span>2015 - {{ "now"|date('Y')}}</span>&nbsp;&nbsp; <b>Ray Moody dba Mister Moody</b></small>
       </footer>
       {% endblock %}
       <!-- //END of Footer -->
     </article>
-    
+		<!-- //'end of' MAIN GRID CONTAINER-->	    
     <!-- JAVASCRIPT ************** --> 
     <!-- \\\\\\ Global Navigation  -->
-    <script src="templates/js/siteNav.js" async></script>
-    <!-- \\\\\\ Scroll-to-Top      
-    <script src="inc/scrollTop.js"></script>-->
-    <!-- \\\\\\ Font-Awesome Icons -->
-    <script src="https://use.fontawesome.com/ceeedfe13b.js"></script>
-    <!-- ************************* --> 
+    <script src="js/siteNav.js" async></script>
+  <!-- ************************************** -->
   </body>
 </html>
