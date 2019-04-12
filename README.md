@@ -193,24 +193,28 @@ The code after the `} else {` at the bottom of the statement illustrates the eas
 
 
 ## Troubleshooting
-There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* No so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
+There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* Not so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
 
-A. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. During production, this link
+A. Must Specify Template During Edit.
+On `line 38` of the `index.php` file, modify the `.twig` file to be rendered so that the page listed reflects the page that needs to be edited. For example, the `about.twig` file needs to be edited, so configure that line to reflect this: 
+> `echo $twig->render('about.twig');`
+
+B. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. During production, this link
 > `href="css/fileName.css"`
 
 should look like this link
 > `href="public/css/fileName.css"`
 
 
-B. Amend the `src=""` path for *ALL* images. During production, the path for this image
+C. Amend the `src=""` path for *ALL* images. During production, the path for this image
 > `src="img/fileName.jpg"`
 
 should look like this link
 > `src="public/img/fileName.jpg"`
 
-C. Place the `.htaccess` file at the *root* of the directory when uploading to the server so that it is a sibling of the `public/` directory as opposed to it being one of its children.
+D. Place the `.htaccess` file at the *root* of the directory when uploading to the server so that it is a sibling of the `public/` directory as opposed to it being one of its children.
 
-D. [NOT implemented here~]
+E. [NOT implemented here~]
 **ONLY 'cache' templates during production, NOT when in development!
 > `['cache' => "false"]
 
