@@ -139,10 +139,12 @@ Some of the available options include:
 | auto_reload | boolean *(recompiles templates)* |
 | autoescape | string *(sets default strategy)* |
 
-Finally, the `if() {} else {}` statement is used to establish **Routing** methods for a global navigation system based on the `$nav` variable defined above it. The statement directs the user to a desired page using the `render()` method as illustrated below:
+Finally, the `if() {} else {}` statement is used to establish **Routing** methods for a global navigation system based on the `$nav` variable defined above it. The line makes use of `($_SERVER['REQUEST_URI'])`, which is a combination of a superglobal variable that, in this case, acts as an array and provides access to specified paths for `<nav>` links. 
+
+All `<nav>` links are written in a logical order so that the statement can direct the user to a desired page using the `render()` method as illustrated below:
 > `echo $twig->render('xxx.twig', ['nav' => $nav]);`
 
-The setup for this system spans three pages and utilizes a routing strategy that is extensible. This topic is thoroughly explained in the self-titled section below.
+The setup for this system spans three pages and utilizes a routing strategy that is extensible by simply copying the entire `elseif () {}` statement and modifying page names. This topic is thoroughly explained in the self-titled section below.
 
 ### The `templates/` Folder
 The ```templates/``` folder is **a storage facility for the basic layout of a site, and template content that the layout template inherits**. The only kind of files that exist here end with the `.twig` extension.
