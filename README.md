@@ -182,25 +182,26 @@ Use the dot or subscript syntax to access attributes of a variable:
 >`{{ foo.bar }}` -or- `{{ foo['bar'] }}`
 
 Utilize the [`attribute-FUNCTION`](https://twig.symfony.com/doc/2.x/functions/attribute.html) feature to access a dynamic attribute of a variable:
->```
-> {{ attribute(object, method, arguments) }}
+>```{{ attribute(object, method, arguments) }}
 >   -or-
-> {{ attribute(array, item) }}
-```
+> {{ attribute(array, item) }}```
 
 Variables can be implemented in control structures as well, to loop through arrays or test conditionals. Such implementation requires that a variable, with an array of items, be declared from the `index.php` file (as illustrated above) or right above the conditional in the template where it will be used.  Once declared, the variable is then called using the [`for-TAG`](https://twig.symfony.com/doc/2.x/tags/for.html) feature, which will loop over (ie iterate) each item in the array.
 The code below, for example, illustrates how the program will iterate through the `varNamE[...]` array, where `varName` is used for each item during looping. In this case, the program will create `3` spans for all three values. 
+
+
 ##### `index.php` File
 >`render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);`
 
+
 ##### `template.twig` File
 >```<div class="row">
->   {% for varName in varNamE %}
->     <div class="span3">
->       <h2>{{ varName|e }}</h2>
->     </div>
->   {% endfor %}
-> </div>```
+   {% for varName in varNamE %}
+     <div class="span3">
+       <h2>{{ varName|e }}</h2>
+     </div>
+   {% endfor %}
+ </div>```
 
 The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
 
