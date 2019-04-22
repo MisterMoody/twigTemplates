@@ -232,20 +232,20 @@ Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expres
 
 |       Type       |     Value Example      |
 |------------------|------------------------|
-|   string         |   "text" -or- 'text'   |
-|   integer        |   42                   |
-|   float          |   02.07                |
-|   boolean        |   true -or- false      |
-|   null           |   null                 |
-|   array          |   [ "foo", "bar" ]     |
-|   hash           |   { "foo": "bar" }     |
+|   string         |   `"text"` -or- `'text'`   |
+|   integer        |   `42`                   |
+|   float          |   `02.07`                |
+|   boolean        |   `true` -or- `false`      |
+|   null           |   `null`                 |
+|   array          |   `[ "foo", "bar" ]`     |
+|   hash           |   `{ "foo": "bar" }`     |
 
 Be careful not to confuse the use of the hash-type literal, which is defined by a list of key-value pairs separated by a comma and wrapped with curly braces, with that of an array, which is encased in brackets. Furthermore, understand that the hash syntax varies depending on the *type of key* that is being expressed:
 
 |         Key-Type    |          Value Example            |
 |---------------------|-----------------------------------|
 |   string / hash     |   `{ 'foo': 'foo', 'bar': 'bar' }`  |
-|   integer           |   `{ 2: 'foo', 4: 'bar' }          |
+|   integer           |   `{ 2: 'foo', 4: 'bar' }`          |
 |   expression        |   `{% set foo = 'foo' %}`           |
 |                     |   `{ (foo): 'foo', (1+1): 'bar'}`    |
 |   *Nested in Array   |   `{% set foo = [1, {"foo": "bar"}] %}`   |
@@ -253,7 +253,30 @@ Be careful not to confuse the use of the hash-type literal, which is defined by 
 Simple enough, right? Just keep in mind that in order to implement **String Interpolation**, string literals must be enclosed with double-quoted strings to display any valid expression.  
 >`{{ "foo #{bar} baz" }}`
 
-These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaboratively concise conditions.
+These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaboratively concise conditions. Common operators include those that make comparisons, perform math calculations or are logical in nature.
+
+|   Operator    |   Function   |
+|---------------|------------------------|
+|     ==        |   Equal to             |
+|     !=        |   Not Equal to         |
+|     <         |   Less Than            |
+|     >         |   Greater Than         |
+|     >=        |   Greater Than or Equal to   |
+|     <=        |   Less Than or Equal to   |
+|               |                        |
+|     +         |   Add Values           |
+|     -         |   Subtract Values      |
+|     *         |   Multiply Values      |
+|     /         |   Divide Values        |
+|     %         |   Return the Remainder   |
+|     **        |   Power Value          |
+|               |                        |
+|     and       |   Returns TRUE if Both Operands are True   |
+|     or        |   Returns TRUE if Either Operand is True   |
+|     expr      |   Groups an Expression   |
+
+There are also operators that are useful when testing and those will be shared in the 'Troubleshooting' section.
+
 
 ### Template Inheritance
 Like learning any language, it is important to understand the languages' syntax before diving into elaborate schemes to create the greatest project ever.
