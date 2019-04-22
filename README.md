@@ -167,24 +167,60 @@ Twig uses **Delimiters** to order a program to do or say something. The action c
 
 When, where and how to use delimiters depends on the objective. All objectives rely on at least one Twig [built-in](https://twig.symfony.com/doc/2.x/) feature. All built-in features are categorized as a [Tag](https://twig.symfony.com/doc/2.x/tags/index.html), [Filter](https://twig.symfony.com/doc/2.x/filters/index.html), [Function](https://twig.symfony.com/doc/2.x/functions/index.html) or [Test](https://twig.symfony.com/doc/2.x/tests/index.html). Tags are the most complex extension point of Twig and are used to modify content before initial rendering. Filters are used to modify variable values, functions are used to generate content and tests are used to evaluate variable expressions. Thus, there is a correlation between these features and variables, which is a good starting point of a template.
 
-**Variables** are passed to templates for manipulation and may contain attributes or elements that can be accessed. In order to `**Set a Variable**`, use the built-in `set-TAG` feature within the action construct. 
->`{% set variable = '' %}`
+#### Working with Variables
+**[Variables](https://twig.symfony.com/doc/2.x/templates.html#variables)** are passed to templates for manipulation and may contain attributes or elements that can be accessed. In order to *`Set a Variable`*, use the built-in [`set-TAG`](https://twig.symfony.com/doc/2.x/tags/set.html) feature within the action construct on the template where the variable will be used (the assigned value can be any valid Twig expression): 
+>`{% set varName = 'varValue' %}`
 
-In order to apply the variable to a template, a call to the variable can be made
-The `set-TAG` can have multiple targe
+Depending on the situation, it may be best to declare a variable from the `index.php` file:
+>`render('template.twig', ['varName' => 'varValue']);`
 
-Set the Variable
+Regardless of method used to set the variable, in order to render the variable in a template, make a call to the variable using the output construct:
+>`{{ varName }}`
 
-Apply the Variable
-*See Expressions
+Furthermore, to access specific attributes of a variable, use the dot or subscript syntax:
+>`{{ foo.bar }}` -or `{{ foo['bar'] }}`
 
+Variables can be implemented in control structures as well, to loop through arrays or test conditionals. Such implementation requires that a variable, with an array of items, be declared from the `index.php` file (as illustrated above) or right above the conditional in the template where it will be used.  Once declared, the variable is then called using the [`for-TAG`](https://twig.symfony.com/doc/2.x/tags/for.html) feature, which will loop over (ie iterate) each item in the array.
+The code below, for example, illustrates how the program will iterate through the `varNamE[...]` array, where `varName` is used for each item during looping. In this case, the program will create `3` spans for all three values. 
+##### `index.php` File
+>`render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);`
 
+##### `template.twig` File
+>`<div class="row">
+    {% for varName in varNamE %}
+      <div class="span3">
+        <h2>{{ varName }}</h2>
+      </div>
+    {% endfor %}
+  </div>
+`
 
-Tags are applied to the syntax to modify content before being rendered.  Tags are the most complex extension point of Twig.
-Filters and Functions are applied to the syntax to modify the content before being rendered.
+The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
+
+As previously mentioned, **filters** are used to modify variables and this can be done by using one of the more than two dozen `xxx-FILTER` features. Equally relevant at this juncture is understanding how to use the `filter-TAG` as both are unique to their circumstance. Lets begin looking at the basic construct:
+>`{{ varName | filterName }}`
+
+Quite simple: use the output construct and separate the variable from the filter that will be used. Knowing that, lets declare a variable called `name` that has a value (all characters of which are lowercase).
+>`{% set name = "mister moody" %}`
+
+Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable: this filter converts a value to uppercase, making the value 'MISTER MOODY.'
+>`{{ name | upper }}`
+
+Now, lets use the [`filter-TAG`](https://twig.symfony.com/doc/2.x/tags/filter.html) feature. The difference in usage between using a filter and using the filter-tag is that the tag allows designers to apply Twig filters to an entire section of code as opposed to targeting a specific variable. 
+>`{% filter upper %} 
+    <p>This text becomes uppercase.</p>
+  {% endfilter %}
+`
+
+It should be noted that some filters accept arguments and multiple filters can be chained together, which will go a long way toward producing a dynamic result. 
+<!--The information in this section thus far has illustrated syntax rules that will be employed throughout any project. However, Twigs potency is enhanced with functions-->
+
 
 ### Expressions and Operators
+
+
 ### Template Inheritance
+Like learning any language, it is important to understand the languages' syntax before diving into elaborate schemes to create the greatest project ever.
 (*See The Templates Folder*) To extend layout structure to child-templates, simply add the following line as the first line: 
 > `{% extends "childTemplate.twig %}`
 
