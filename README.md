@@ -196,14 +196,15 @@ The code below, for example, illustrates how the program will iterate through th
 
 
 ##### `template.twig` File
->`<div class="row">`
-   `{% for varName in varNamE %}`
-     `<div class="span3">`
-       `<h2>{{ varName|e }}</h2>`
-     `</div>`
-   `{% endfor %}`
- `</div>`
-
+>```html
+<div class="row">
+   {% for varName in varNamE %}
+     <div class="span3">
+       <h2>{{ varName }}</h2>
+     </div>
+   {% endfor %}
+ </div>
+ ```
 
 The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
 
