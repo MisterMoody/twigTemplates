@@ -145,26 +145,50 @@ Finally, the `if() {} else {}` statement is used to establish **Routing** method
 All `<nav>` links are written in a logical order so that the statement can direct the user to a desired page using the `render()` method as illustrated below:
 > `echo $twig->render('xxx.twig', ['nav' => $nav]);`
 
-The setup for this system spans three pages and utilizes a routing strategy that is extensible by simply **copying the entire `elseif () {}` statement and modifying page names**. This topic is thoroughly explained in the self-titled section below.
+The setup for this template system spans three pages and utilizes a routing strategy that is extensible by simply **copying the entire `elseif () {}` statement and modifying page names**. This topic is thoroughly explained in the self-titled section below.
 
 ### The `templates/` Folder
 The ```templates/``` folder is **a storage facility for the basic layout of a site, and template content that the layout template inherits**. The only kind of files that exist here end with the `.twig` extension.
 
 ![Templates Directory](public/img/templatesDIR.png)
 
-This project has six templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is [extended](https://twig.symfony.com/doc/2.x/tags/extends.html) to other templates. To extend layout structure to child-templates, simply add the following line as the first line: 
-> `{% extends "childTemplate.twig %}`
-
-*This is the beauty of templating: having one file to control the entire site view!* This is also the perfect segway to dive into designing with Twig!
+This project has six templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is [extended](https://twig.symfony.com/doc/2.x/tags/extends.html) to other templates. This feature is explained in detail in the *Template Inheritance* section, but the subject offers the perfect segway to dive into designing with Twig!
 
 
 ## Designing with Twig
-Twig is a high-performant templating language that is reader-friendly. A template is a text file that can generate any text-based format and is parsed by PHP, containing a mix of text and PHP code. As well, variables, expressions and tags are coded to templates to acquire values once a template is evaluated, and control the logic of the template, respectively.
+Twig is a high-performant templating language that is reader-friendly. A template is a text file that can generate any text-based format and is parsed by PHP, containing a mix of text and PHP code. As well, variables, expressions and tags are coded to templates to acquire values once a template is evaluated, and control the logic of the template, respectively. Moreover, templates are automatically cached and re-compiled after any changes are made.
 
-Although Twig code eerily resembles PHP, such tags are not processed due to the fact that Twig templates are compiled to a native PHP class. Moreover, templates are automatically cached and re-compiled after any changes are made.
+Although Twig code eerily resembles PHP, such tags are not processed due to the fact that Twig templates are compiled to a native PHP class. Familiarity in writing PHP will go a long way when using Twig as features typical of a PHP application can and should be utilized. 
+
+The index.php file described above highlights the influence PHP has in Twig with use of an API call to an autoloader, declared variables, an array with sub-arrays and a global routing system using the if() {} else {} statement to render pages. That said, understanding how to read and write Twig should be a cinch.
+
 ### Twig Language Constructs
+Twig uses **Delimiters** to order a program to do or say something. The action construct `{% ... %}` tells the program to `do` something: it controls the logic of the template and is used to execute conditionals, for-loops and blocks. The output construct `{{ ... }}` tells the program to `say` something: it will display/print the result of an expression to the template. The comment construct `{# ... #}` tells the program not to render any code written within it. 
+
+When, where and how to use delimiters depends on the objective. All objectives rely on at least one Twig [built-in](https://twig.symfony.com/doc/2.x/) feature. All built-in features are categorized as a [Tag](https://twig.symfony.com/doc/2.x/tags/index.html), [Filter](https://twig.symfony.com/doc/2.x/filters/index.html), [Function](https://twig.symfony.com/doc/2.x/functions/index.html) or [Test](https://twig.symfony.com/doc/2.x/tests/index.html). Tags are the most complex extension point of Twig and are used to modify content before initial rendering. Filters are used to modify variable values, functions are used to generate content and tests are used to evaluate variable expressions. Thus, there is a correlation between these features and variables, which is a good starting point of a template.
+
+**Variables** are passed to templates for manipulation and may contain attributes or elements that can be accessed. In order to `**Set a Variable**`, use the built-in `set-TAG` feature within the action construct. 
+>`{% set variable = '' %}`
+
+In order to apply the variable to a template, a call to the variable can be made
+The `set-TAG` can have multiple targe
+
+Set the Variable
+
+Apply the Variable
+*See Expressions
+
+
+
+Tags are applied to the syntax to modify content before being rendered.  Tags are the most complex extension point of Twig.
+Filters and Functions are applied to the syntax to modify the content before being rendered.
+
 ### Expressions and Operators
 ### Template Inheritance
+(*See The Templates Folder*) To extend layout structure to child-templates, simply add the following line as the first line: 
+> `{% extends "childTemplate.twig %}`
+
+
 ### Reusable Components
 ### List of Filters, Functions, Tags and Tests
 ### Coding Standards
