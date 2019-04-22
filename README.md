@@ -243,12 +243,12 @@ Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expres
 Be careful not to confuse the use of the hash-type literal, which is defined by a list of key-value pairs separated by a comma and wrapped with curly braces, with that of an array, which is encased in brackets. Furthermore, understand that the hash syntax varies depending on the *type of key* that is being expressed:
 
 |         Key-Type    |          Value Example            |
-|---------------------|----|------------------------------|
-|   string / hash     |   { 'foo': 'foo', 'bar': 'bar' }  |
-|   integer           |   { 2: 'foo', 4: 'bar' }          |
-|   expression        |   {% set foo = 'foo' %}           |
-|                     |   { (foo): 'foo', (1+1): 'bar'    |
-|   *Nested in Array   |   {% set foo = [1, {"foo": "bar"}] %}   |
+|---------------------|-----------------------------------|
+|   string / hash     |   `{ 'foo': 'foo', 'bar': 'bar' }`  |
+|   integer           |   `{ 2: 'foo', 4: 'bar' }          |
+|   expression        |   `{% set foo = 'foo' %}`           |
+|                     |   `{ (foo): 'foo', (1+1): 'bar'}`    |
+|   *Nested in Array   |   `{% set foo = [1, {"foo": "bar"}] %}`   |
 
 Simple enough, right? Just keep in mind that in order to implement **String Interpolation**, string literals must be enclosed with double-quoted strings to display any valid expression.  
 >`{{ "foo #{bar} baz" }}`
