@@ -155,6 +155,7 @@ The ```templates/``` folder is **a storage facility for the basic layout of a si
 This project has six templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is [extended](https://twig.symfony.com/doc/2.x/tags/extends.html) to other templates. This feature is explained in detail in the *Template Inheritance* section, but the subject offers the perfect segway to dive into designing with Twig!
 
 
+
 ## Designing with Twig
 Twig is a high-performant templating language that is reader-friendly. A template is a text file that can generate any text-based format and is parsed by PHP, containing a mix of text and PHP code. As well, variables, expressions and tags are coded to templates to acquire values once a template is evaluated, and control the logic of the template, respectively. Moreover, templates are automatically cached and re-compiled after any changes are made.
 
@@ -186,14 +187,14 @@ The code below, for example, illustrates how the program will iterate through th
 >`render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);`
 
 ##### `template.twig` File
->`<div class="row">
+>```<div class="row">
     {% for varName in varNamE %}
       <div class="span3">
-        <h2>{{ varName }}</h2>
+        <h2>{{ varName|e }}</h2>
       </div>
     {% endfor %}
   </div>
-`
+```
 
 The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
 
@@ -203,7 +204,7 @@ As previously mentioned, **filters** are used to modify variables and this can b
 Quite simple: use the output construct and separate the variable from the filter that will be used. Knowing that, lets declare a variable called `name` that has a value (all characters of which are lowercase).
 >`{% set name = "mister moody" %}`
 
-Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable: this filter converts a value to uppercase, making the value 'MISTER MOODY.'
+Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable: this filter converts a value to uppercase.'
 >`{{ name | upper }}`
 
 Now, lets use the [`filter-TAG`](https://twig.symfony.com/doc/2.x/tags/filter.html) feature. The difference in usage between using a filter and using the filter-tag is that the tag allows designers to apply Twig filters to an entire section of code as opposed to targeting a specific variable. 
@@ -214,6 +215,7 @@ Now, lets use the [`filter-TAG`](https://twig.symfony.com/doc/2.x/tags/filter.ht
 
 It should be noted that some filters accept arguments and multiple filters can be chained together, which will go a long way toward producing a dynamic result. 
 <!--The information in this section thus far has illustrated syntax rules that will be employed throughout any project. However, Twigs potency is enhanced with functions-->
+
 
 
 ### Expressions and Operators
@@ -228,6 +230,7 @@ Like learning any language, it is important to understand the languages' syntax 
 ### Reusable Components
 ### List of Filters, Functions, Tags and Tests
 ### Coding Standards
+
 
 
 ## Building a Navigation System
@@ -267,6 +270,7 @@ The code after the `} else {` at the bottom of the statement illustrates the eas
 
 
 
+
 ## Troubleshooting
 There are a few annoyances with this project depending on its state: development versus production. *Out of the box, this **project works well in development**.* Not so much the case when uploading the project to the server. Thus, there are a few things to consider when things go wrong:
 
@@ -292,6 +296,7 @@ D. Place the `.htaccess` file at the *root* of the directory when uploading to t
 E. [NOT implemented here~]
 **ONLY 'cache' templates during production, NOT when in development!
 > `['cache' => "false"]
+
 
 
 ## * ~TO BE CONTINUED~ *
