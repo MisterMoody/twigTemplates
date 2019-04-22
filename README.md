@@ -274,6 +274,10 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     and       |   Returns TRUE if Both Operands are True   |
 |     or        |   Returns TRUE if Either Operand is True   |
 |     expr      |   Groups an Expression   |
+|               |                        |
+|     ~         |   Converts Operands to Strings / Concatenates  |
+|     ..        |   Create a Sequence (of Letters / Numbers)   |
+|     expr      |   Groups an Expression   |
 
 There are also operators that are useful when testing and those will be shared in the 'Troubleshooting' section.
 
