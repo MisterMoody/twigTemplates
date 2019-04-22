@@ -194,15 +194,13 @@ The code below, for example, illustrates how the program will iterate through th
 >`render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);`
 
 ##### `template.twig` File
->```
-> <div class="row">
+>```<div class="row">
 >   {% for varName in varNamE %}
 >     <div class="span3">
 >       <h2>{{ varName|e }}</h2>
 >     </div>
 >   {% endfor %}
-> </div>
-```
+> </div>```
 
 The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
 
@@ -226,7 +224,32 @@ It should be noted that some filters accept arguments and multiple filters can b
 The information in this section illustrated syntax rules for using variables while employing a built-in tag, filter and function feature. Yet, the code used only touched the surface of the power instilled in the Twig templating language. Although not explored here, test features are equally important to the development of any project: such content will be shared in the 'Troubleshooting' section below. Fortunately, this presents an opportunity to explore valid variable expressions and operators before advancing further with elaborate concepts.
 
 ### Expressions and Operators
+Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expressions) everywhere, the simplest form being a Literal, which are PHP data-type representations.
 
+|       Type       |     Value Example      |
+|------------------|------------------------|
+|   string         |   "text" -or- 'text'   |
+|   integer        |   42                   |
+|   float          |   02.07                |
+|   boolean        |   true -or- false      |
+|   null           |   null                 |
+|   array          |   [ "foo", "bar" ]     |
+|   hash           |   { "foo": "bar" }     |
+
+Be careful not to confuse the use of the hash-type literal, which is defined by a list of key-value pairs separated by a comma and wrapped with curly braces, with that of an array, which is encased in brackets. Furthermore, understand that the hash syntax varies depending on the *type of key* that is being expressed:
+
+|         Key-Type    |          Value Example            |
+|---------------------|----|------------------------------|
+|   string / hash     |   { 'foo': 'foo', 'bar': 'bar' }  |
+|   integer           |   { 2: 'foo', 4: 'bar' }          |
+|   expression        |   {% set foo = 'foo' %}           |
+|                     |   { (foo): 'foo', (1+1): 'bar'    |
+|   *Nested in Array   |   {% set foo = [1, {"foo": "bar"}] %}   |
+
+Simple enough, right? Just keep in mind that in order to implement **String Interpolation**, string literals must be enclosed with double-quoted strings to display any valid expression.  
+>`{{ "foo #{bar} baz" }}`
+
+These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaboratively concise conditions.
 
 ### Template Inheritance
 Like learning any language, it is important to understand the languages' syntax before diving into elaborate schemes to create the greatest project ever.
