@@ -2,20 +2,21 @@
 Template Layout System that Combines PHP and Twig
 
 1. Installing Twig
-2. Project Directory  
-3. Building a Navigation System
-4. Extending Twig with Functions
-5. Designing with Twig
+2. Project Directory [Pre-Installed]
+3. Project Directory [Dev Installed]
+4. Desiging with Twig
+5. Building a Navigation System
 6. Troubleshooting
 
 ## Installing Twig
 *This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7. Prerequisite knowledge of `html`, `css`, `javascript`, `json` and `php` is required.*
 
+### Use Console to Install
 To install Twig, open the console and ```cd..``` to  project folder. Then, run the following command:
 > ```composer require "twig/twig:^2.0"```
 
 
-## Project Directory [Part 1]
+## Project Directory [Pre-Installed]
 Once installation is complete, the project will house the ```vendor/``` folder as well as the ```composer.json``` and ```composer.lock``` files in its directory. *The `.git` file was instantiated when setting up this project on Github. Pay no attention to that `.git` behind the curtain!*
 
 ![Main Directory](public/img/mainDIR.png)
@@ -61,7 +62,7 @@ The ```composer.lock``` file **defines dependencies and vendors** that are curre
 
 
 
-## Project Directory [Part 2]
+## Project Directory [Dev Installed]
 After outlining the ```composer.json``` file with suitable properties, prepare a ```README.md``` file and two folders: one named ```public/``` and another named ```templates/```.
 
 ![Project Directory](public/img/projectDIR.png)
@@ -144,7 +145,7 @@ Finally, the `if() {} else {}` statement is used to establish **Routing** method
 All `<nav>` links are written in a logical order so that the statement can direct the user to a desired page using the `render()` method as illustrated below:
 > `echo $twig->render('xxx.twig', ['nav' => $nav]);`
 
-The setup for this system spans three pages and utilizes a routing strategy that is extensible by simply copying the entire `elseif () {}` statement and modifying page names. This topic is thoroughly explained in the self-titled section below.
+The setup for this system spans three pages and utilizes a routing strategy that is extensible by simply **copying the entire `elseif () {}` statement and modifying page names**. This topic is thoroughly explained in the self-titled section below.
 
 ### The `templates/` Folder
 The ```templates/``` folder is **a storage facility for the basic layout of a site, and template content that the layout template inherits**. The only kind of files that exist here end with the `.twig` extension.
@@ -154,7 +155,19 @@ The ```templates/``` folder is **a storage facility for the basic layout of a si
 This project has six templates, but three of them are *extendable components* of the ```base.twig``` file, which is the template that *contains the `html` structure for the site*. This is the *main* template that all other templates **inherit stylesheets and scripts** for a uniform presentation of the site across pages. Unlike other `.twig` files, this file is never rendered, however, it has portable components **included** from other templates that are *implemented* when the file is [extended](https://twig.symfony.com/doc/2.x/tags/extends.html) to other templates. To extend layout structure to child-templates, simply add the following line as the first line: 
 > `{% extends "childTemplate.twig %}`
 
-*This is the beauty of templating: having one file to control the entire site view!*
+*This is the beauty of templating: having one file to control the entire site view!* This is also the perfect segway to dive into designing with Twig!
+
+
+## Designing with Twig
+Twig is a high-performant templating language that is reader-friendly. A template is a text file that can generate any text-based format and is parsed by PHP, containing a mix of text and PHP code. As well, variables, expressions and tags are coded to templates to acquire values once a template is evaluated, and control the logic of the template, respectively.
+
+Although Twig code eerily resembles PHP, such tags are not processed due to the fact that Twig templates are compiled to a native PHP class. Moreover, templates are automatically cached and re-compiled after any changes are made.
+### Twig Language Constructs
+### Expressions and Operators
+### Template Inheritance
+### Reusable Components
+### List of Filters, Functions, Tags and Tests
+### Coding Standards
 
 
 ## Building a Navigation System
