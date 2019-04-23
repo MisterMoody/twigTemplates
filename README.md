@@ -263,14 +263,12 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     >         |   Greater Than         |
 |     >=        |   Greater Than or Equal to   |
 |     <=        |   Less Than or Equal to   |
-|               |                        |
 |     +         |   Add Values           |
 |     -         |   Subtract Values      |
 |     *         |   Multiply Values      |
 |     /         |   Divide Values        |
 |     %         |   Return the Remainder   |
 |     **        |   Power Value          |
-|               |                        |
 |     and       |   Returns TRUE if Both Operands are True   |
 |     or        |   Returns TRUE if Either Operand is True   |
 |     expr      |   Groups an Expression   |
@@ -279,13 +277,45 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
 |     expr      |   Groups an Expression   |
 
-There are also operators that are useful when testing and those will be shared in the 'Troubleshooting' section.
+There are also operators that are useful when testing: those are shared in the 'Troubleshooting' section.
 
 
 ### Template Inheritance
-Like learning any language, it is important to understand the languages' syntax before diving into elaborate schemes to create the greatest project ever.
-(*See The Templates Folder*) To extend layout structure to child-templates, simply add the following line as the first line: 
+In the **`templates`** folder sub-section, reference was made to the fact that templates inherit layout presentation from a main template. The name of the main template in this project is the `base.twig` file.
+
+![Main Template](public/img/baseTwig.png)
+
+What makes this file special is that all other templates will inherit its foundation to support themselves in a way that will provide the site with a uniform presentation. On the surface, this file looks like a typical `<html>` document: it has a `<!DOCTYPE html>`, a `<head>` section, and a `<body>` section that houses the sites `global navigation`, a `content` area and a `footer`. Upon closer inspection, however, a key Twig built-in feature is employed.
+
+The [`block-TAG`](https://twig.symfony.com/doc/2.x/tags/block.html) sets the tone for template inheritance as it is used to define sections of a page (like a placeholder) that child templates can modify for individual page relevance. The parent-template invokes this tag three times: in the `<head>`, the `<body>` and the `<footer>`. The syntax is like what was done previously with the `filter-TAG`: 
+> `{% block xxx %} <htmlTag>...<htmlTag> {% endblock xxx %}`
+
+
+![`<head>` of Parent-Template](public/img/baseHEAD.png)
+
+![`<foot>` of Parent-Template](public/img/baseFOOT.png)
+
+Where used in the `<head>`, it allows modification of the browser-tab title, specifically, and anything else within it. This is also true when used in the `<footer>`.
+
+![`<body>` of Parent-Template](public/img/baseCONTENT.png)
+
+This section is perfectly setup to be used in child-templates for content to be added. Of the three sections, the `<body>` could possibly be the only section that is modified outside of the parent-template.  
+
+With blocks set, attention shifts to extending the template and this is done using the [`extends-TAG`](https://twig.symfony.com/doc/2.x/tags/extends.html), which will extend the layout structure to child-templates by prompting the templating engine to evaluate the base template immediately prior to rendering a child template; it is in this instance that parent-blocks are overridden by child-blocks. 
+When employed, it must be placed on the first line of the template. 
 > `{% extends "childTemplate.twig %}`
+
+After that, apply any `block` tags from the parent-template to the child and modify its content.
+
+![Child-Template](public/img/childTEMPLATE.png)
+
+This child-template will:
+- inherit the parent-template via the `extends` tag
+- modify the contents of the `title-block`
+- inject page content into the `content-block`
+- value of `footer-block` is not defined (nothing replaced)
+
+Although the `extends` tag is used only once per template, the `block` tag will be utilized extensively throughout a project. Thus, it is important to keep in mind that not all defined parent-template blocks must be implemented; blocks can be nested and can access variables from outer scopes; improve block readability by adding named end-tags; it is not possible to define multiple block tags with the same name in the same template.
 
 
 ### Reusable Components
