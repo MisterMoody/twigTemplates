@@ -272,7 +272,6 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     and       |   Returns TRUE if Both Operands are True   |
 |     or        |   Returns TRUE if Either Operand is True   |
 |     expr      |   Groups an Expression   |
-|               |                        |
 |     ~         |   Converts Operands to Strings / Concatenates  |
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
 |     expr      |   Groups an Expression   |
@@ -317,11 +316,14 @@ This child-template will:
 
 Although the `extends` tag is used only once per template, the `block` tag will be utilized extensively throughout a project. Thus, it is important to keep in mind that not all defined parent-template blocks must be implemented; blocks can be nested and can access variables from outer scopes; improve block readability by adding named end-tags; it is not possible to define multiple block tags with the same name in the same template.
 
+Aside from extending the entire layout of a parent-template to a child-template, Twig allows extending the entirety of a content-block from a child-template to another child-template.  This is done using the [`include-FUNCTION`](https://twig.symfony.com/doc/2.x/functions/include.html) to return the rendered content of a template:
+>`{{ include('template.html', {foo: 'bar'}) }}`
 
-### Reusable Components
+Included templates can access variables of the active context as well as variable defined in the parent-template.  This function offers five arguments, only one of which is necessary and that is the `name` of the template to render. Optional arguments include `with_context` set to false to disable access to the context; `ignore_missing` set to true to return an empty string if the template does not exist; and `sandboxed` set to true when including an end-user created template.
+
+<!--### Reusable Components
 ### List of Filters, Functions, Tags and Tests
-### Coding Standards
-
+### Coding Standards-->
 
 
 ## Building a Navigation System
