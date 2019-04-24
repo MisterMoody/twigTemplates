@@ -322,6 +322,37 @@ Aside from extending the entire layout of a parent-template to a child-template,
 
 Included templates can access variables of the active context as well as variable defined in the parent-template.  This function offers five arguments, only one of which is necessary and that is the `name` of the template to render. Optional arguments include `with_context` set to false to disable access to the context; `ignore_missing` set to true to return an empty string if the template does not exist; and `sandboxed` set to true when including an end-user created template.
 
+### Output Escaping
+There are times when generating `<html>` from a template that a variable will include characters that affects the `<html>`. For such instances, in is pertinent to [escape that output](https://twig.symfony.com/doc/2.x/templates.html#heml-escaping). With Twig, everything is automatically escaped by default as a security mechanism for user entered data, but the [environment options](https://twig.symfony.com/doc/2.x/api.html#environment-options) are wholly configurable. 
+
+Developers are responsible for escaping variables when manual escaping is enabled.  One means to achieve this objective would be to use the [escape](https://twig.symfony.com/doc/2.x/filters/escape.html) filter which escapes a string for safe insertion into the final `<html>` output:
+>`{{ user.username | escape }}` -or- `{{ user.username | e }}`
+
+In the example above, the `e` expression respresents an alias of the escape filter. Regardless, this filter can be used in contexts other than `<html>` in the form of an optional argument, which can be made to define the escaping strategy as, for example, JavaScript:
+>`{{ user.username | escape('js) }}` 
+
+In the event that manual escaping is enabled, but there are variables whose markup should not be escaped, pipe the [raw-FILTER](https://twig.symfony.com/doc/2.x/filters/raw.html) to that variable to mark its value as being safe, thus, it will not be escaped.
+
+The escape strategies notated above should be used when trying to escape the output of a single variable. In order to escape a section of a template to be escaped, it is best practice to utilize the [autoescape-TAG](https://twig.symfony.com/doc/2.x/tags/autoescape.html). 
+>`{% autoescape %} Output As-Is {% endautoescape %}`
+
+This tag accepts an escape strategy argument as well as use of the raw filter.
+```{% autoescape 'js' %} 
+  {{ safe_value|raw}} 
+{% endautoescape %}```
+
+For large amounts of complicated content that does not require parsing, invoke the [verbatim-TAG](https://twig.symfony.com/doc/2.x/tags/verbatim.html); this tag allows developers to display content as-is, in spite of its context.
+```{% verbatim' %} 
+  <ul>
+    {% for item in seq %}
+      <li>{{ item }}</li>
+    {% endofr %}
+  </ul>
+{% verbatim %}```
+
+
+
+
 <!--### Reusable Components
 ### List of Filters, Functions, Tags and Tests
 ### Coding Standards-->
