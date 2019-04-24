@@ -278,6 +278,7 @@ These expressions will be handy when dealing with conditional statements: incorp
 
 There are also operators that are useful when testing: those are shared in the 'Troubleshooting' section.
 
+Syntax aside, Twig has a set of [coding standards](https://twig.symfony.com/doc/2.x/coding_standards.html) that developers should follow and typically involves when, where and how to use spaces. For example, put one space after the start of and before the end of a delimiter. With all of that out of the way, lets focus on more advanced features.
 
 ### Template Inheritance
 In the **`templates`** folder sub-section, reference was made to the fact that templates inherit layout presentation from a main template. The name of the main template in this project is the `base.twig` file.
