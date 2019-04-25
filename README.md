@@ -337,25 +337,22 @@ The escape strategies notated above should be used when trying to escape the out
 >`{% autoescape %} Output As-Is {% endautoescape %}`
 
 This tag accepts an escape strategy argument as well as use of the raw filter.
-```{% autoescape 'js' %} 
+```
+{% autoescape 'js' %} 
   {{ safe_value|raw}} 
-{% endautoescape %}```
+{% endautoescape %}
+```
 
 For large amounts of complicated content that does not require parsing, invoke the [verbatim-TAG](https://twig.symfony.com/doc/2.x/tags/verbatim.html); this tag allows developers to display content as-is, in spite of its context.
-```{% verbatim' %} 
+```
+{% verbatim' %} 
   <ul>
     {% for item in seq %}
       <li>{{ item }}</li>
     {% endofr %}
   </ul>
-{% verbatim %}```
-
-
-
-
-<!--### Reusable Components
-### List of Filters, Functions, Tags and Tests
-### Coding Standards-->
+{% verbatim %}
+```
 
 
 ## Building a Navigation System
