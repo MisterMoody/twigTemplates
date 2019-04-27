@@ -275,9 +275,9 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
 |     expr      |   Groups an Expression   |
 
-There are also operators that are useful when testing: those are shared in the 'Troubleshooting' section.
+There are also operators that are useful when testing and those are elaborated upon in the 'Troubleshooting' section. Expressions and operators are used invariably throughout traditional programs, and will most often be put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which is used to test how an expression evaluates.
 
-Syntax aside, Twig has a set of [coding standards](https://twig.symfony.com/doc/2.x/coding_standards.html) that developers should follow and typically involves when, where and how to use spaces. For example, put one space after the start of and before the end of a delimiter. With all of that out of the way, lets focus on more advanced features.
+
 
 ### Template Inheritance
 In the **`templates`** folder sub-section, reference was made to the fact that templates inherit layout presentation from a main template. The name of the main template in this project is the `base.twig` file.
@@ -396,7 +396,7 @@ The code after the `} else {` at the bottom of the statement illustrates the eas
 When working with any programming language, there will be times when the actual code will need to be tested. There will also be times when the project itself requires detailed explanation and/or instructions for how to work with the project. These two situations are properly dealt with here.
 
 ### Troubleshooting `<code>`
-As was mentioned previously, expressions are everywhere and, when combined with operators, are useful for producing conditional statements. The operators shared above were used to compare, do math and add logic to conditional statements: those shared here focus solely on testing (**comparative and logical operators are equally used during testing**). Put these operators to use by enclosing them within an [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which is the bases for testing how an expression evaluates. In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
+As was mentioned previously, expressions are everywhere and, when combined with operators, are useful for producing conditional statements. The operators shared above were used to compare, do math and add logic to conditional statements: those shared here focus solely on testing (**comparative and logical operators are equally used during testing**). Put these operators to use by enclosing them within an [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) in similar fashion as was previously noted. In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
 ```
 {% if online == false %}
   <p>Website in maintenance mode.</p>
