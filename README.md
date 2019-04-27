@@ -289,18 +289,25 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
 <!--|     ~         |   Converts Operands to Strings / Concatenates  |-->
 
-Common operators include those that are used to make comparisons and use logic, which are useful for testing conditionals. Expressions and operators are used invariably throughout traditional programs, and are often put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates. 
+Common operators include those that are used to make comparisons and use logic, which are useful for testing conditionals. Expressions and operators are used invariably throughout traditional programs, and are often put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates. In the example below, the output construct will display `Happy` because the expression utilizes the comparative `equal-to` operator where the variable `smile`  in fact evaluates to `true`.
+```twig
+{% if smile == true %}
+  {{ Happy }}
+{% endif %}`
+```
+
+Below you will find a list of examples that involve output of expressions using operators.
 
 |   Operator    |   Expression   |   Evaluation Output   |
-|---------------|------------------------|------------------------|
-|     ==        |   `{ % if apple == fruit %}`   |   true   |
-|     !=        |   `{ % if juice != food %}`   |   false   |
-|     <         |   `{ % if 8 < 4 %}`   |   false   |
-|     >         |   `{ % if 10 > 5 %}`   |   true   |
-|     >=        |   `{ % if 50 >= 100 %}`   |   false   |
-|     <=        |   `{ % if 44 <= 81 %}`   |   true   |
-|     and       |   `{ % if user and register == fruit %}`    |   true   |
-|     or        |   `{ % if juice or milk != drink %}`   |   false   |
+|---------------|:------------------------:|------------------------:|
+|     ==        |   `{ % if apple == fruit %}`   |   **true**   |
+|     !=        |   `{ % if juice != food %}`   |   **false**   |
+|     <         |   `{ % if 8 < 4 %}`   |   **false**   |
+|     >         |   `{ % if 10 > 5 %}`   |   **true**   |
+|     >=        |   `{ % if 50 >= 100 %}`   |   **false**   |
+|     <=        |   `{ % if 44 <= 81 %}`   |   **true**   |
+|     and       |   `{ % if user and register == fruit %}`    |   **true**   |
+|     or        |   `{ % if juice or milk != drink %}`   |   **false**   |
 |     ~         |   example   |   thrid column   |
 |     ..        |   example   |   thrid column   |
 
@@ -323,7 +330,6 @@ The `if` tag is a powerful tool to test complex expressions by using `elseif` an
   {{ Better luck next time! }}
 {% endif %}
 ```
-
 
 The ternary operator (`?`) offers a shorthand of sorts for the conditional `if-else` statement. 
 
