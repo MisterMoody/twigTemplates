@@ -220,18 +220,18 @@ render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);
 The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
 
 As previously mentioned, **filters** are used to modify variables and this can be done by using one of the more than two dozen `xxx-FILTER` features. Equally relevant at this juncture is understanding how to use the `filter-TAG` as both are unique to their circumstance. Lets begin looking at the basic construct:
-`{{ varName | filterName }} `
+`{{ varName | filterName }}`
 
 Quite simple: use the output construct and separate the variable from the filter that will be used. Knowing that, lets declare a variable called `name` that has a value (all characters of which are lowercase). 
-`{% set name = "mister moody" %}`
+`{% set name = "moody" %}`
 
-Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable: this filter converts a value to uppercase.  
+Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable which will convert a value to uppercase.  
 `{{ name | upper }}`
 
 Now, lets use the [`filter-TAG`](https://twig.symfony.com/doc/2.x/tags/filter.html) feature. The difference in usage between using a filter and using the filter-tag is that the tag allows designers to apply Twig filters to an entire section of code as opposed to targeting a specific variable. 
 ```twig
 {% filter upper %} 
-  <p>This text becomes uppercase.</p>
+  {{ This text becomes uppercase. }}
 {% endfilter %}
 ```
 
@@ -267,7 +267,7 @@ Simple enough, right? Just keep in mind that in order to implement **String Inte
 {{ "foo #{bar} baz" }}
 ```
 
-These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaboratively concise conditions. Common operators include those that make comparisons, perform math calculations or are logical in nature.
+These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaboratively concise conditions. Performing math calculations is the simplest way that operators are used.
 
 |   Operator    |   Function   |
 |---------------|------------------------|
@@ -286,33 +286,31 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     and       |   Returns TRUE if Both Operands are True   |
 |     or        |   Returns TRUE if Either Operand is True   |
 |     expr      |   Groups an Expression   |
-|     ~         |   Converts Operands to Strings / Concatenates  |
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
+<!--|     ~         |   Converts Operands to Strings / Concatenates  |-->
 
-There are also operators that are useful when testing and those are elaborated upon in the 'Troubleshooting' section. Expressions and operators are used invariably throughout traditional programs, and are often put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates. In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
+Common operators include those that are used to make comparisons and use logic, which are useful for testing conditionals. Expressions and operators are used invariably throughout traditional programs, and are often put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates. 
+
+|   Operator    |   Expression   |   Evaluation Output   |
+|---------------|------------------------|
+|     ==        |   `{ % if apple == fruit %} {{ evaluates to 'true' }} {% endif %}`   |
+|     !=        |   `{ % if juice != food %} {{ evaluates to 'false' }} {% endif %}`   |
+|     <         |   `{ % if 8 < 4 %} {{ evaluates to 'false' }} {% endif %}`   |
+|     >         |   `{ % if 10 > 5 %} {{ evaluates to 'true' }} {% endif %}`   |
+|     >=        |   `{ % if 50 >= 100 %} {{ evaluates to 'false' }} {% endif %}`   |
+|     <=        |   `{ % if 44 <= 81 %} {{ evaluates to 'true' }} {% endif %}`   |
+|     and       |   `{ % if user and register == fruit %} {{ evaluates to 'true' }} {% endif %}`    |
+|     or        |   `{ % if juice or milk != drink %} {{ evaluates to 'false' }} {% endif %}`   |
+|     ~         |   example   |   thrid column   |
+|     ..        |   example   |   thrid column   |
+
+#### Elaborative Examples
+In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
 ```twig
-{% if online == false %}
-  {{ Website in maintenance mode. }}
+{% if smile == true %}
+  {{ Happy }}
 {% endif %}`
 ```
-|   Operator    |   Function   |
-|---------------|------------------------|
-|     ==        |     |
-|     !=        |      |
-|     <         |   `{ % if var1 *<* var2 %} {{ var1 is *smaller than* var2 }} {% endif %}`   |
-|     >         |   `{ % if var1 *>* var2 %} {{ var1 is *bigger than* var2 }} {% endif %}`   |
-|     >=        |      |
-|     <=        |      |
-|     +         |      |
-|     -         |      |
-|     *         |      |
-|     /         |      |
-|     %         |      |
-|     **        |      |
-|     and       |      |
-|     or        |      |
-|     ~         |      |
-|     ..        |      |
 
 
 The `if` tag is a powerful tool to test complex expressions by using `elseif` and `else` branches to execute conditional statements based on whether or not one of more than two conditions are met. The `and` operator is used in the example below to illustrate a range:
