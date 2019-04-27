@@ -220,19 +220,18 @@ render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);
 The `for-TAG` is a versatile feature that does more than iterate over keys, key-value pairs or a subset: it can also be used to evaluate Twig expressions that incorporate operators and/or invokes the else clause. Moreover, the [loop variable](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) can be employed within a for-loop block to access special variables.
 
 As previously mentioned, **filters** are used to modify variables and this can be done by using one of the more than two dozen `xxx-FILTER` features. Equally relevant at this juncture is understanding how to use the `filter-TAG` as both are unique to their circumstance. Lets begin looking at the basic construct:
->`{{ varName | filterName }}`
+`twig {{ varName | filterName }} `
 
-Quite simple: use the output construct and separate the variable from the filter that will be used. Knowing that, lets declare a variable called `name` that has a value (all characters of which are lowercase).
->`{% set name = "mister moody" %}`
+Quite simple: use the output construct and separate the variable from the filter that will be used. Knowing that, lets declare a variable called `name` that has a value (all characters of which are lowercase). `{% set name = "mister moody" %}`
 
-Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable: this filter converts a value to uppercase.'
->`{{ name | upper }}`
+Now, lets use the [`upper-FILTER`](https://twig.symfony.com/doc/2.x/tags/for.html#the-loop-variable) feature on the variable: this filter converts a value to uppercase.  `{{ name | upper }}`
 
 Now, lets use the [`filter-TAG`](https://twig.symfony.com/doc/2.x/tags/filter.html) feature. The difference in usage between using a filter and using the filter-tag is that the tag allows designers to apply Twig filters to an entire section of code as opposed to targeting a specific variable. 
->`{% filter upper %} 
-    <p>This text becomes uppercase.</p>
-  {% endfilter %}
-`
+```tiwg
+{% filter upper %} 
+  <p>This text becomes uppercase.</p>
+{% endfilter %}
+```
 
 It should be noted that some filters accept arguments and multiple filters can be chained together, which will go a long way toward producing a dynamic result. This
 
