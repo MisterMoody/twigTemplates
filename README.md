@@ -227,7 +227,7 @@ It should be noted that some filters accept arguments and multiple filters can b
 The information in this section illustrated syntax rules for using variables while employing a built-in tag, filter and function feature. Yet, the code used only touched the surface of the power instilled in the Twig templating language. Although not explored here, test features are equally important to the development of any project: such content will be shared in the 'Troubleshooting' section below. Fortunately, this presents an opportunity to explore valid variable expressions and operators before advancing further with elaborate concepts.
 
 ### Expressions and Operators
-Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expressions) everywhere, the simplest form being a Literal, which are PHP data-type representations.
+Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expressions) everywhere: an expression is evaluated to its Boolean value meaning that a particular statement will be executed if it evaluates to `true` and ignored otherwise. The simplest form of an expression is a Literal, which are PHP data-type representations.
 
 |       Type       |     Value Example      |
 |------------------|------------------------|
@@ -275,8 +275,34 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
 |     expr      |   Groups an Expression   |
 
-There are also operators that are useful when testing and those are elaborated upon in the 'Troubleshooting' section. Expressions and operators are used invariably throughout traditional programs, and will most often be put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which is used to test how an expression evaluates.
+There are also operators that are useful when testing and those are elaborated upon in the 'Troubleshooting' section. Expressions and operators are used invariably throughout traditional programs, and will most often be put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates.
 
+In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
+```
+{% if online == false %}
+  <p>Website in maintenance mode.</p>
+{% endif %}`
+```
+
+
+
+The if tag will be a valuable asset when using operators to test code, but it can become a powerful tool to test complex expressions by using `elseif` and `else` branches:
+```
+{ % if student.grade >= 95 %}
+  <p>Great job</p>
+{% elseif student.grade >= 75 and 94 %}
+  <p>Good job</p>
+{% else %}
+  <p>Better luck next time!</p>
+{% endif %}
+```
+
+
+The ternary operator (`?`) offers a shorthand of sorts for the conditional `if-else` statement. 
+
+|       Converts this...       |     ...into this.      |
+|------------------|------------------------|
+|   `if (hungry) {haveCake(); } else { eatCakeToo(); }`         |   `hungry ? 'haveCake()' : 'eatCakeToo()'`   |
 
 
 ### Template Inheritance
@@ -396,21 +422,26 @@ The code after the `} else {` at the bottom of the statement illustrates the eas
 When working with any programming language, there will be times when the actual code will need to be tested. There will also be times when the project itself requires detailed explanation and/or instructions for how to work with the project. These two situations are properly dealt with here.
 
 ### Troubleshooting `<code>`
-As was mentioned previously, expressions are everywhere and, when combined with operators, are useful for producing conditional statements. The operators shared above were used to compare, do math and add logic to conditional statements: those shared here focus solely on testing (**comparative and logical operators are equally used during testing**). Put these operators to use by enclosing them within an [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) in similar fashion as was previously noted. In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
-```
-{% if online == false %}
-  <p>Website in maintenance mode.</p>
-{% endif %}`
-```
+As was mentioned previously, expressions are everywhere and, when combined with operators, are useful for producing conditional statements. The operators shared above were used to compare, do math and add logic to conditional statements: those shared here focus solely on testing (**comparative and logical operators are equally used during testing**). Put these operators to use by enclosing them within an [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) in similar fashion as was previously noted. 
 
-Two other means to make comparisons involve the `starts with` and `ends with` comparative operators, which are good for checking if a string starts-with or ends-with another string. In the examples below, both expressions would evaluate to `true`.
+One unique method to make comparisons involve the `starts with` and `ends with` comparative operators, which are good for checking if a string starts-with or ends-with another string. In the examples below, both expressions would evaluate to `true`.
 >`{% if 'Ray' starts with 'R' %} {% endif %}`
 >`{% if 'Ray' ends with 'Y' %} {% endif %}`
 
 The containment operators (`in`) can be used to perform containment test, which returns `true` if the left operand is contained in the right: consider it a check of an item within an array.
 >`{{ 'cd' in 'abcde' }} -or- {{ 1 in [1, 2, 3] }}`
 
-The test operator (`is`) can be used to evaluate the value of a variable against a common expression, which returns `true` if the variable **is** what the right operand equates to. In the example below, the output construct is used instead of the action construct and is used in conjunction with the [odd-TESTS](https://twig.symfony.com/doc/2.x/tests/index.html) feature, which will evaluate to `true` if the given number is odd:
+When testing multiple conditions, use the `and` or `or` operators:
+```javascript
+{% if temperature > 68 and temperature < 81 %}
+  <p>Great weather for a walk.</p>
+{% endif %}
+```
+
+The test operator (`is`) can be used to evaluate the value of a variable against a common expression, which returns `true` if the variable **is** what the right operand equates to. In the example below, the [defined-TESTS](https://twig.symfony.com/doc/2.x/tests/defined.html) feature is used to check if a variable is defined.
+>`{% if var is defined %} {% endif %}`
+
+In the example below, the output construct is used instead of the action construct and is used in conjunction with the [odd-TESTS](https://twig.symfony.com/doc/2.x/tests/odd.html) feature, which will evaluate to `true` if the given number is odd:
 >`{{ variable is odd }}`
 
 The containment and test operators can be used to check if an expression evaluates to `false` as well by using the `not` negation operator.
@@ -421,30 +452,8 @@ These can be written a different way:
 >`{% if not (1 in [1, 2, 3] )} {% endif %}`
 >`{% if not var is odd %} {% endif %}`
 
-When testing multiple conditions, use the `and` or `or` operators:
-```
-{% if temperature > 68 and temperature < 81 %}
-  <p>Great weather for a walk.</p>
-{% endif %}
-```
 
-The if tag will be a valuable asset when using operators to test code, but it can become a powerful tool to test complex expressions by using `elseif` and `else` branches:
-```
-{ % if student.grade >= 95 %}
-  <p>Great job</p>
-{% elseif student.grade >= 75 and 94 %}
-  <p>Good job</p>
-{% else %}
-  <p>Better luck next time!</p>
-{% endif %}
-```
-That said, the ternary operator (`?`) offers a shorthand of sorts for the conditional `if-else` statement. 
-
-|       Converts this...       |     ...into this.      |
-|------------------|------------------------|
-|   `if (hungry) {haveCake(); } else { eatCakeToo(); }`         |   `hungry ? 'haveCake()' : 'eatCakeToo()'`   |
-
-This is a great start for unit testing, but Twig has several [Tests](https://twig.symfony.com/doc/2.x/tests/index.html) features not described here that will be equally useful. If comfortable with the command line, there are commands that can be used to check a file or a directory for syntax errors:
+This is a great start for unit testing, but Twig has several [Tests](https://twig.symfony.com/doc/2.x/tests/index.html) features that are equally useful. Furthermore, if comfortable with the command line, there are commands that can be used to check a file or a directory for syntax errors:
 
 |   Check a File   |   `php bin/console lint:twig templates/home.twig`     |
 |------------------|------------------------|
