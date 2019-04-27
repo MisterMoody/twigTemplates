@@ -170,7 +170,7 @@ When, where and how to use delimiters depends on the objective. All objectives r
 
 #### Working with Variables
 **[Variables](https://twig.symfony.com/doc/2.x/templates.html#variables)** are passed to templates for manipulation and may contain attributes or elements that can be accessed. In order to *`Set a Variable`*, use the built-in [`set-TAG`](https://twig.symfony.com/doc/2.x/tags/set.html) feature within the action construct on the template where the variable will be used (the assigned value can be any valid Twig expression): 
-```javascript 
+```twig 
 {% set varName = 'varValue' %}
 ```
 
@@ -180,33 +180,34 @@ render('template.twig', ['varName' => 'varValue']);
 ```
 
 Regardless of method used to set the variable, in order to render the variable in a template, make a call to the variable using the output construct:
-```javascript
+```twig
 {{ varName }}
 ```
 
 Use the dot or subscript syntax to access attributes of a variable:
-```javascript
-{{ foo.bar }}` -or- `{{ foo['bar'] }}
+```twig
+{{ foo.bar }}
+      -or-
+{{ foo['bar'] }}
 ```
 
 Utilize the [`attribute-FUNCTION`](https://twig.symfony.com/doc/2.x/functions/attribute.html) feature to access a dynamic attribute of a variable:
 ```twig
 {{ attribute(object, method, arguments) }}
-   -or-
+      -or-
 {{ attribute(array, item) }}
 ```
 
-<!--
--->
 Variables can be implemented in control structures as well, to loop through arrays or test conditionals. Such implementation requires that a variable, with an array of items, be declared from the `index.php` file (as illustrated above) or right above the conditional in the template where it will be used.  Once declared, the variable is then called using the [`for-TAG`](https://twig.symfony.com/doc/2.x/tags/for.html) feature, which will loop over (ie iterate) each item in the array.
 The code below, for example, illustrates how the program will iterate through the `varNamE[...]` array, where `varName` is used for each item during looping. In this case, the program will create `3` spans for all three values. 
 
 ##### `index.php` File
->`render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);`
-
+```javascript
+render('template.twig', ['varNamE' => ['varVal1', 'varVal2', 'varVal3']);
+```
 
 ##### `template.twig` File
-```html
+```twig
     <div class="row">
       {% for varName in varNamE %}
         <div class="span3">
