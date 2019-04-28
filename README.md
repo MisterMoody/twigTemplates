@@ -51,9 +51,9 @@ The ```"time":``` property details the package version release date.
 
 The ```"license":``` property details the package license, if any.
 
-The ```"author":``` property acknowledges project developers using an array of sub-properties that identifies devs by name, email, hompage or role.
+The ```"author":``` property acknowledges project developers using an array of sub-properties that identifies devs by name, email, homepage or role.
 
-Learn more about [basic usage](https://getcomposer.org/doc/01-basic-usage.md), configuring [composer.json](https://getcomposer.org/doc/04-schema.md), using [composer commands](https://composer.json.jolicode.com/), and modifying [JSON Schema](http://json-schema.org) and their properties [properties](https://getcomposer.org/doc/04-schema.md#properties).
+Learn more about [basic usage](https://getcomposer.org/doc/01-basic-usage.md), configuring [composer.json](https://getcomposer.org/doc/04-schema.md), using [composer commands](https://composer.json.jolicode.com/), and modifying [JSON Schema](http://json-schema.org) and their [properties](https://getcomposer.org/doc/04-schema.md#properties).
 
 ### The ```composer.lock``` file 
 
@@ -89,7 +89,7 @@ The `css/` folder **stores cascading stylesheets that determine the sites presen
 
 The `img/` folder **stores the screenshots** or other imagery to enhance text content.
 
-The `js/` folder **stores javascript which creates functionality**. This project has a single script, `siteNav.js`, that provides the functionality for the global navigation system.
+The `js/` folder **stores javascript, which creates functionality**. This project has a single script, `siteNav.js`, that provides the functionality for the global navigation system.
 
 #### The `.htaccess` File
 
@@ -244,14 +244,13 @@ Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expres
 
 |       Type       |     Value Example      |
 |------------------|------------------------|
-|   string         |   `"text"` -or- `'text'`   |
-|   integer        |   `42`                   |
-|   float          |   `02.07`                |
-|   boolean        |   `true` -or- `false`      |
-|   null           |   `null`                 |
-|   array          |   `[ "foo", "bar" ]`     |
-|   hash           |   `{ "foo": "bar" }`     |
-
+|   string         |   `"text"` -or- `'text'` |
+|   integer        |   `42`                 |
+|   float          |   `02.07`              |
+|   boolean        |   `true` -or- `false`  |
+|   null           |   `null`               |
+|   array          |   `[ "foo", "bar" ]`   |
+|   hash           |   `{ "foo": "bar" }`   |
 Be careful not to confuse the use of the hash-type literal, which is defined by a list of key-value pairs separated by a comma and wrapped with curly braces, with that of an array, which is encased in brackets. Furthermore, understand that the hash syntax varies depending on the *type of key* that is being expressed:
 
 |         Key-Type    |          Value Example            |
@@ -298,34 +297,25 @@ Common operators include those that are used to make comparisons and use logic, 
 
 Below you will find a list of examples that involve output of expressions using operators.
 
-|   Operator    |   Expression   |   Evaluation Output   |
-|:---------------:|:------------------------|:-----------------------:|
-|     ==        |   `{ % if apple == fruit %}`   |   **true**   |
-|     !=        |   `{ % if juice != food %}`   |   **false**   |
-|     <         |   `{ % if 8 < 4 %}`   |   **false**   |
-|     >         |   `{ % if 10 > 5 %}`   |   **true**   |
-|     >=        |   `{ % if 50 >= 100 %}`   |   **false**   |
-|     <=        |   `{ % if 44 <= 81 %}`   |   **true**   |
-|     and       |   `{ % if user and register == fruit %}`    |   **true**   |
-|     or        |   `{ % if juice or milk != drink %}`   |   **false**   |
-|     ~         |   example   |   thrid column   |
-|     ..        |   example   |   thrid column   |
+|          |   Expression   |   Evaluation Output   |
+|:---------|:------------------------|:-----------------------|
+|     ==    |   `{ % if apple == fruit %}`   |   **true**   |
+|     !=    |   `{ % if juice != food %}`   |   **false**   |
+|     <     |   `{ % if 8 < 4 %}`   |   **false**   |
+|     >     |   `{ % if 10 > 5 %}`   |   **true**   |
+|     >=    |   `{ % if 50 >= 100 %}`   |   **false**   |
+|     <=    |   `{ % if 44 <= 81 %}`   |   **true**   |
+|     and   |   `{ % if user and register == fruit %}`    |   **true**   |
+|     or    |   `{ % if juice or milk != drink %}`   |   **false**   |
 
-#### Elaborative Examples
-In the example below, the comparative `equal-to` operator is used to test if the expression evaluates to true:
-```twig
-{% if smile == true %}
-  {{ Happy }}
-{% endif %}`
-```
-
+<!--#### Elaborative Examples
 When testing multiple conditions, use the `and` or `or` operators:
 ```javascript
 {% if temperature > 68 and temperature < 81 %}
   <p>Great weather for a walk.</p>
 {% endif %}
 ```
-
+-->
 The `if` tag is a powerful tool to test complex expressions, especially when incorporating `elseif` and `else` branches to execute conditional statements based on whether or not one of more than two conditions are met. The `and` operator is used in the example below to illustrate a range:
 ```twig
 { % if student.grade >= 95 %}
@@ -435,7 +425,7 @@ There are times when generating `<html>` from a template that a variable will in
 Developers are responsible for escaping variables when manual escaping is enabled.  One means to achieve this objective would be to use the [escape](https://twig.symfony.com/doc/2.x/filters/escape.html) filter which escapes a string for safe insertion into the final `<html>` output:
 >`{{ user.username | escape }}` -or- `{{ user.username | e }}`
 
-In the example above, the `e` expression respresents an alias of the escape filter. Regardless, this filter can be used in contexts other than `<html>` in the form of an optional argument, which can be made to define the escaping strategy as, for example, JavaScript:
+In the example above, the `e` expression represents an alias of the escape filter. Regardless, this filter can be used in contexts other than `<html>` in the form of an optional argument, which can be made to define the escaping strategy as, for example, JavaScript:
 >`{{ user.username | escape('js) }}` 
 
 In the event that manual escaping is enabled, but there are variables whose markup should not be escaped, pipe the [raw-FILTER](https://twig.symfony.com/doc/2.x/filters/raw.html) to that variable to mark its value as being safe, thus, it will not be escaped.
@@ -505,27 +495,35 @@ When working with any programming language, there will be times when the project
 
 A. Must Specify Template During Edit.
 On `line 38` of the `index.php` file, modify the `.twig` file to be rendered so that the page listed reflects the page that needs to be edited. For example, the `about.twig` file needs to be edited, so configure that line to reflect this: 
-> `echo $twig->render('about.twig');`
-
+```javascript
+echo $twig->render('about.twig');
+``` 
 B. Amend ALL `href=""` paths for any `.css` or `.js` file stored in the `base.twig` file with `public/`. During production, this link
-> `href="css/fileName.css"`
-
+```javascript
+href="css/fileName.css"
+```
 should look like this link
-> `href="public/css/fileName.css"`
-
+```javascript
+href="public/css/fileName.css"
+```
 
 C. Amend the `src=""` path for *ALL* images. During production, the path for this image
-> `src="img/fileName.jpg"`
+```javascript
+src="img/fileName.jpg"
+```
 
 should look like this link
-> `src="public/img/fileName.jpg"`
+```javascript
+src="public/img/fileName.jpg"
+```
 
 D. Place the `.htaccess` file at the *root* of the directory when uploading to the server so that it is a sibling of the `public/` directory as opposed to it being one of its children.
 
-E. [NOT implemented here~]
+E. []
 **ONLY 'cache' templates during production, NOT when in development!
-> `['cache' => "false"]
-
+```javascript
+['cache' => "false"]
+```
 
 
 ## * ~TO BE CONTINUED~ *
