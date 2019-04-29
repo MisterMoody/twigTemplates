@@ -11,7 +11,7 @@ Template Layout System that Combines PHP and Twig
 ## Installing Twig
 *This project utilizes [Twig v2.0](https://twig.symfony.com/) and requires PHP 7. Prerequisite knowledge of `html`, `css`, `javascript`, `json` and `php` is required.*
 
-### Use Console to Install
+#### Use Console to Install
 To install Twig, open the console and ```cd..``` to  project folder. Then, run the following command:
 > ```composer require "twig/twig:^2.0"```
 
@@ -21,7 +21,7 @@ Once installation is complete, the project will house the ```vendor/``` folder a
 
 ![Main Directory](public/img/mainDIR.png)
 
-### The ```vendor/``` Folder
+#### The ```vendor/``` Folder
 
 The ```vendor/``` folder contains **required project dependencies** for Composer, Symphony and Twig. Working with this folder requires an advanced skillset that is outside of the scope of this project, but there are considerations to keep in mind. 
 
@@ -31,7 +31,7 @@ In an effort to maximize project management efficiency, it is best to upload thi
 Composer suggests:
 > If you are using git for your project, you probably want to add ```vendor/``` to the ```.gitignore```. You really don't want to add all of that third-party code to your versioned repository.
 
-### The ```composer.json``` File 
+#### The ```composer.json``` File 
 
 The ```composer.json``` file is the **root package**, which defines project requirements and is the resource used by developers to declare project dependencies that Composer will manage. Composer uses a JSON schema to provide human and machine readable documentation of this file which can also validate file content.
 
@@ -55,7 +55,7 @@ The ```"author":``` property acknowledges project developers using an array of s
 
 Learn more about [basic usage](https://getcomposer.org/doc/01-basic-usage.md), configuring [composer.json](https://getcomposer.org/doc/04-schema.md), using [composer commands](https://composer.json.jolicode.com/), and modifying [JSON Schema](http://json-schema.org) and their [properties](https://getcomposer.org/doc/04-schema.md#properties).
 
-### The ```composer.lock``` file 
+#### The ```composer.lock``` file 
 
 The ```composer.lock``` file **defines dependencies and vendors** that are currently installed in the ```vendor/``` folder. This file is significant in that the state of dependencies are *locked* in a specified version, and as such, *should always be committed to version control*, which ensures that the same dependencies used during development are also used during production. There is no need to manually modify this file, however, when the time arises to update dependencies, run this command:
 >```composer install```
@@ -239,7 +239,7 @@ It should be noted that some filters accept arguments and multiple filters can b
 
 The information in this section illustrated syntax rules for using variables while employing a built-in tag, filter and function feature. Yet, the code used only touched the surface of the power instilled in the Twig templating language. Although not explored here, test features are equally important to the development of any project: such content will be shared in the 'Troubleshooting' section below. Fortunately, this presents an opportunity to explore valid variable expressions and operators before advancing further with elaborate concepts.
 
-### Expressions and Operators
+#### Expressions and Operators
 Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expressions) everywhere: an expression is evaluated to its Boolean value meaning that a particular statement will be executed if it evaluates to `true` and ignored otherwise. The simplest form of an expression is a Literal, which are PHP data-type representations.
 
 |       Type       |     Value Example      |
@@ -251,6 +251,7 @@ Twig allows [expressions](https://twig.symfony.com/doc/2.x/templates.html#expres
 |   null           |   `null`               |
 |   array          |   `[ "foo", "bar" ]`   |
 |   hash           |   `{ "foo": "bar" }`   |
+
 Be careful not to confuse the use of the hash-type literal, which is defined by a list of key-value pairs separated by a comma and wrapped with curly braces, with that of an array, which is encased in brackets. Furthermore, understand that the hash syntax varies depending on the *type of key* that is being expressed:
 
 |         Key-Type    |          Value Example            |
@@ -266,7 +267,7 @@ Simple enough, right? Just keep in mind that in order to implement **String Inte
 {{ "foo #{bar} baz" }}
 ```
 
-These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaboratively concise conditions. Performing math calculations is the simplest way that operators are used.
+These expressions will be handy when dealing with conditional statements: incorporating operators into the mix will afford designers the ability to create elaborately concise conditions. Performing math calculations is the simplest way that operators are used.
 
 |   Operator    |   Function   |
 |---------------|------------------------|
@@ -288,7 +289,7 @@ These expressions will be handy when dealing with conditional statements: incorp
 |     ..        |   Create a Sequence (of Letters / Numbers)   |
 <!--|     ~         |   Converts Operands to Strings / Concatenates  |-->
 
-Common operators include those that are used to make comparisons and use logic, which are useful for testing conditionals. Expressions and operators are used invariably throughout traditional programs, and are often put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates. In the example below, the output construct will display `Happy` because the expression utilizes the comparative `equal-to` operator where the variable `smile`  in fact evaluates to `true`.
+Common operators include those that are used to make comparisons and use logic, which are useful for testing conditionals. Expressions and operators are used invariably throughout traditional programs, and are often put to use with the [if-TAG](https://twig.symfony.com/doc/2.x/tags/if.html) feature, which performs conditional execution of code for how an expression evaluates. In the example below, the output construct will display `Happy` because the expression utilizes the comparative `equal-to` operator where the variable `smile` (in fact) evaluates to `true`.
 ```twig
 {% if smile == true %}
   {{ Happy }}
@@ -308,19 +309,11 @@ Below you will find a list of examples that involve output of expressions using 
 |     and   |   `{ % if user and register == fruit %}`    |   **true**   |
 |     or    |   `{ % if juice or milk != drink %}`   |   **false**   |
 
-<!--#### Elaborative Examples
-When testing multiple conditions, use the `and` or `or` operators:
-```javascript
-{% if temperature > 68 and temperature < 81 %}
-  <p>Great weather for a walk.</p>
-{% endif %}
-```
--->
 The `if` tag is a powerful tool to test complex expressions, especially when incorporating `elseif` and `else` branches to execute conditional statements based on whether or not one of more than two conditions are met. The `and` operator is used in the example below to illustrate a range:
 ```twig
 { % if student.grade >= 95 %}
   {{ Great job }}
-{% elseif student.grade >= 75 and 94 %}
+{% elseif student.grade >= 75 and < 94 %}
   {{ Good job }}
 {% else %}
   {{ Better luck next time! }}
@@ -347,7 +340,7 @@ The containment operator can be used to check if an expression evaluates to `fal
 This can be written a different way:
 >`{% if not (1 in [1, 2, 3] )} {% endif %}`
 
-As is detailed, operators can perform a considerable amout of programmatic work and works well for conducting unit testing. Twig also offers a suite of [Tests](https://twig.symfony.com/doc/2.x/tests/index.html) features that are equally useful in testing conditional statements. This feature is often combined with the test operator (`is`), which is used to evaluate the value of a variable against a common expression, which returns `true` if the variable **is** what the right operand equates to. The basic setup for a test looks like this:
+As is detailed, operators can perform a considerable amount of programmatic work and works well for conducting unit testing. Twig also offers a suite of [Tests](https://twig.symfony.com/doc/2.x/tests/index.html) features that are equally useful in testing conditional statements. This feature is often combined with the test operator (`is`), which is used to evaluate the value of a variable against a common expression, which returns `true` if the variable **is** what the right operand equates to. The basic setup for a test looks like this:
 >`{{ var is 'test-TAG' }}`
 
 Lets view how some of these features operate.
@@ -375,7 +368,7 @@ Furthermore, Twig offers a command line tool to check a file or a directory for 
 
 |   Check a File   |   `php bin/console lint:twig templates/home.twig`     |
 |------------------|------------------------|
-|   Check a Directory   |   `php bin/console lint:twig templates/`   |
+|   *Check a Directory*   |   *`php bin/console lint:twig templates/`*   |
 
 ### Template Inheritance
 In the **`templates`** folder sub-section, reference was made to the fact that templates inherit layout presentation from a main template. The name of the main template in this project is the `base.twig` file.
