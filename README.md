@@ -478,6 +478,10 @@ So, what's going on here? There is a file called `forms.html` that is set-up as 
 
 
 
+
+### Twig Shortcuts
+There are several shortcuts that Twig offers in the form of [`recipes`](https://twig.symfony.com/doc/2.x/recipes.html) that can be used to customize syntax, validate the template syntax, use a database to store templates and so much more. To learn more about all that Twig has to offer, be sure to read over the [`documentation`](https://twig.symfony.com/).
+
 ## Building a Navigation System
 The setup for the navigation system used in this project was created based on the following procedures: 
 1. Define the `$nav` Variable
