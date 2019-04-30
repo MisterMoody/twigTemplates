@@ -445,6 +445,39 @@ For large amounts of complicated content that does not require parsing, invoke t
 ```
 
 
+### Macro Components
+A special feature of Twig involves the [`macro-TAG`](https://twig.symfony.com/doc/2.x/tags/macro.html), which gives developers the ability to include custom PHP functions in a template while allowing encapsulation and interoperability of individual (and reusable) `<html>` elements. This aspect of twig mirrors `[web components]` in that their application helps developers avoid code-repetition, maintaining the industry standard `DRY` priniciples. 
+
+The process of incorporating a `macro` into a project is relatively simple: create a template for the macro then import the macro to a child-template by calling it where needed. 
+
+#### Create `macro` Template (`forms.html`)
+```twig
+{% macro input(name, value, type = "text") %}
+  <input  name="{{ name }}" type="{{ type|default("text") }}" value="{{ value|e }}" id="input{{ name }}" />
+{% endmacro input %}
+
+{% macro textarea(name, value, rows, columns) %}
+  <textarea name="{{ name }}" rows="{{ rows|default(10) }}" id="input{{ name }}" placeholder="Enter {{ name }}> {{ value|e }}" </textarea>
+{% endmacro input %}
+```
+
+#### Import Template to Child-Template (`contact.twig`)
+{% import "forms.html" as forms %}
+
+#### Call the `macro`
+```twig
+<form method="post">
+  {{ forms.input('name') post.name }}
+  {{ forms.input('password', null, 'password') }}
+  {{ forms.textarea('message') post.message }}
+  <buttom type="submit>Send Message</button>
+</form>
+```
+
+So, what's going on here? There is a file called `forms.html` that is set-up as the parent-template which houses the `macro`. The [`import-TAG`](https://twig.symfony.com/doc/2.x/tags/import.html) feature is used to import the `macro` into a particular template and then a call is made to the `macro` by its name (`input()`) and the associated `argument` that you want to use. The `macro call` invokes the `macro` name (`input`) and uses the arguments on separated lines where the user can enter information then `submit` the form. Pretty simple, right? There are a few caveats to be concerned with, like implementing the `method="post"` in an array on the `index.php` file to function properly because the `$_POST` variable cannot be used directly in Twig.  When mporting a `macro` from a template into the current namespace, use the [`from-TAG`](https://twig.symfony.com/doc/2.x/tags/from.html). Moreover, because arguments are optional, developers are not required to define default argument values as they can be defined using the [`default-FILTER`](https://twig.symfony.com/doc/2.x/filter/default.html) whilst within the `macro` body. 
+
+
+
 ## Building a Navigation System
 The setup for the navigation system used in this project was created based on the following procedures: 
 1. Define the `$nav` Variable
